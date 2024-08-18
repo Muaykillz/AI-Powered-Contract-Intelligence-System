@@ -3,9 +3,15 @@ from src.services.ocr import OCR
 from src.services.chat import Solar
 
 def render():
+    # Set page title
+    st.title("Contract Summarization with Upstage")
+
     uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
     if uploaded_file is not None:
         if st.button("✨ Process and Summarize Document"):
+
+            st.session_state.uploaded_file = uploaded_file
+
             with st.spinner("Processing..."):
                 ocr_service = OCR()
                 solar_service = Solar()

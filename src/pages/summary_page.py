@@ -1,7 +1,25 @@
 import streamlit as st
-from src.utils.xml_parser import display_summary
+from src.utils.json_parser import display_summary
 
 def render():
+    # Custom CSS
+    st.markdown("""
+    <style>
+    .block-container {
+        padding-top: 1rem;
+    }
+    h1 {
+        margin-bottom: 1rem;
+    }
+    h3 {
+        margin-bottom: 0.5rem;
+    }
+    .section-spacing {
+        margin-bottom: 2rem;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
     if st.session_state.summary_result:
         display_summary(st.session_state.summary_result)
 
@@ -37,21 +55,16 @@ def render():
             st.session_state.summary_result = None
             st.rerun()
     
-    # Leave the middle column empty for spacing
-    with col2:
-        pass
-    with col3:
-        pass
     
     # Place "Save" button in the third column with custom styling
     with col4:
-        save_button = st.button("Save", key="save_button")
+        save_button = st.button("💾 Save", key="save_button")
         st.markdown(
             """
             <style>
                 div[data-testid="stHorizontalBlock"] > div:nth-child(4) button {
                     width: 100%;
-                    background-color: #4CAF50;
+                    background-color: #000000;
                     color: white;
                     border: none;
                 }
@@ -60,5 +73,5 @@ def render():
             unsafe_allow_html=True
         )
         if save_button:
-            # ฟังก์ชันการบันทึกจะถูกเพิ่มในอนาคต
-            st.info("Save functionality will be implemented in the future.")
+            st.session_state.page = 'save'
+            st.rerun()
