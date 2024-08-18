@@ -6,7 +6,7 @@ from src.utils.json_parser import extract_events_from_summary
 from src.database.vector_db import vector_db
 
 def render():
-    st.title("📄 Upload and Save PDF to Google Drive")
+    st.title("💾 Save the contract")
 
     uploaded_file = st.session_state.uploaded_file
     ocr_result = st.session_state.get('ocr_result', '')
@@ -48,12 +48,19 @@ def render():
 
             if saveBtn:
                 with st.spinner("Saving contract and events..."):
+                    print("Saving to Google Drive...")
                     file_id = save_to_google_drive(uploaded_file)
+                    print(f"File saved successfully with ID: {file_id}")
+
+                    print("Saving events...")
                     events = extract_events_from_summary(summary_result)
                     save_events(events, file_id)
+                    print("Events saved successfully.")
                     
                     # Save to Chroma Vector DB
-                    vector_db_id = vector_db.save_to_vector_db(summary_result, ocr_result)
+                    print("Saving to Chroma Vector DB...")
+                    vector_db_id = vector_db.save_to_vector_db(summary_result, ocr_result["text"])
+                    print(f"Saved to Chroma Vector DB with ID: {vector_db_id}")
                     
                     st.success(f"Contract and events saved successfully. File ID: {file_id}, Vector DB ID: {vector_db_id}")
                     st.session_state.page = 'upload'

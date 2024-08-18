@@ -4,7 +4,9 @@ from googleapiclient.http import MediaIoBaseUpload, MediaIoBaseDownload
 import io
 import os
 import streamlit as st
+from src.utils.config import load_environment_variables
 
+load_environment_variables()
 
 SERVICE_ACCOUNT_FILE = 'service_account.json'
 SCOPES = ['https://www.googleapis.com/auth/drive']

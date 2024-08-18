@@ -72,18 +72,6 @@ def render():
     elif cal.get("eventClick") is not None:
         st.write("Event clicked:", cal["eventClick"]["event"]["title"])
 
-    # Display upcoming events
-    st.subheader("Upcoming Events")
-    from datetime import datetime
-
-    current_date = datetime.now().date()
-    upcoming_events = sorted([event for event in db_events if datetime.fromisoformat(event['start']).date() >= current_date], key=lambda x: x['start'])[:5]
-    
-    if upcoming_events:
-        for event in upcoming_events:
-            st.write(f"📌 {event['title']} - {event['start']}")
-    else:
-        st.info("No upcoming events found.")
 
 if __name__ == "__main__":
     render()

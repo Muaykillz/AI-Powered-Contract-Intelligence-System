@@ -1,6 +1,12 @@
 import streamlit as st
 import pandas as pd
+import os
 from src.database.google_drive_db import get_files_from_drive, download_file
+from src.utils.config import load_environment_variables
+
+load_environment_variables()
+
+FOLDER_ID = os.getenv('DRIVE_FOLDER_ID')
 
 def render():
     st.title("📁 Contract Storage")
@@ -29,19 +35,9 @@ def render():
     st.dataframe(df, use_container_width=True, hide_index=True)
 
     # Add download functionality
-    if st.button("⬇️ Download Selected File"):
-        selected_files = df[df.select_dtypes(['bool']).any(axis=1)]
-        if not selected_files.empty:
-            file_id = selected_files.iloc[0]['id']
-            file_content = download_file(file_id)
-            st.download_button(
-                label="Download File",
-                data=file_content,
-                file_name=selected_files.iloc[0]['name'],
-                mime="application/octet-stream"
-            )
-        else:
-            st.warning("Please select a file to download.")
+    if st.button("🔗 Go to Drive Folder"):
+        drive_folder_link = f"https://drive.google.com/drive/folders/{FOLDER_ID}"
+        st.markdown(f"[Click here to view the Drive folder]({drive_folder_link})")
 
 if __name__ == "__main__":
     render()

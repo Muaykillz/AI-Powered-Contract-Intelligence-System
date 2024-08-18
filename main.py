@@ -3,8 +3,6 @@ from streamlit_option_menu import option_menu
 from src.pages import summary_page, upload_page, storage_page, calendar_page, save_page, chat_page
 from src.utils.config import load_environment_variables
 
-
-
 def main():
 
     # Style
