@@ -112,12 +112,14 @@ class Solar:
     def analyze_user_query(self, query: str) -> Dict[str, Any]:
         logger.debug(f"Analyzing query: {query}")
         messages = [
-            {"role": "system", "content": "You are an intelligent AI assistant specialized in analyzing user queries about procurement contracts."},
+            {"role": "system", "content": "You are an intelligent AI assistant specialized in analyzing user queries about contracts."},
             {"role": "user", "content": 
-             f"""Analyze the following user query and provide:
-                1. At least 3 key points to search for in contracts
+             f"""Analyze the following user query and provide search results:
+                1. At least 3 key points including financial-related to search for in contracts
                 2. Possible related contract types
-                3. At least 5 keywords for searching
+                3. At least 5 exact keywords for searching
+
+                **Focus on identifying elements that are likely to appear verbatim in a contract,
 
                 User query: {query}
 
@@ -125,7 +127,7 @@ class Solar:
                 {{
                     "key_points": ["point1", "point2", "point3"],
                     "contract_types": ["type1", "type2"],
-                    "keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5"]
+                    "keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5"],
                 }}
              """
             }
@@ -151,7 +153,7 @@ class Solar:
                     #logger.debug(f"Parsed analysis: {analysis}")
                     
                     # Ensure all required keys are present
-                    required_keys = ["key_points", "contract_types", "keywords"]
+                    required_keys = ["key_points", "contract_types", "keywords", "exact_phrases", "numerical_data"]
                     for key in required_keys:
                         if key not in analysis:
                             logger.warning(f"Key '{key}' not found in analysis, adding empty list")
@@ -184,7 +186,7 @@ class Solar:
         messages = [
             {"role": "system", "content": "You are an intelligent AI assistant named Bulka specialized in answering questions about procurement contracts"},
             {"role": "user", "content": 
-             f"""Based on the user query, provide a detailed answer.
+             f"""Answer the following query based on the provided context. Focus on extracting and presenting specific information including exact contract terms.
                 Include references to the source documents.
 
                 Context: {context}
@@ -244,7 +246,7 @@ class Solar:
         context = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
         
         messages = [
-            {"role": "system", "content": "You are an AI assistant specialized in evaluating responses to contract-related queries."},
+            {"role": "system", "content": "You are an intelligent AI assistant specialized in evaluating responses to contract-related queries."},
             {"role": "user", "content": 
              f"""Evaluate the following response to the user query. Consider the relevance, accuracy, and completeness of the answer based on the provided context.
 
@@ -346,7 +348,7 @@ class Solar:
         evaluation = self.self_evaluate(query, response, search_results)
         
         # If the groundedness score or evaluation score is low, try to improve the response
-        if groundedness_result['score'] < 0.5 or evaluation['evaluation_score'] < 0.5:
+        if groundedness_result['score'] < 0.75 or evaluation['evaluation_score'] < 0.75:
             improved_results = vector_db.hybrid_search(
                 query_embedding=query_embedding,
                 keywords=analysis['keywords'],
