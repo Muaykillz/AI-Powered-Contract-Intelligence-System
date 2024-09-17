@@ -1,0 +1,21 @@
+venv
+
+# Ignore .env file to prevent sensitive information from being committed
+.env
+
+/tests
+
+/__pycache__
+**/__pycache__/
+
+# Ignore .DS_Store files
+.DS_Store
+
+# Ignore all .DS_Store files in subdirectories
+**/.DS_Store
+
+# Ignore .vscode files
+.vscode
+
+# Ignore service account key
+service_account.json
