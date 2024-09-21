@@ -262,4 +262,4 @@ class VectorDB:
             print("Collection is already empty.")
 
 # Create an instance of VectorDB
-vector_db = VectorDB(clear_on_init=True)
+vector_db = VectorDB(clear_on_init=False)
