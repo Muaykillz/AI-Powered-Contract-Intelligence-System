@@ -3,99 +3,39 @@ from typing import List, Dict, Any
 from openai import OpenAI
 import json
 import re
+import logging
+from langgraph.graph import Graph, END
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 class Solar:
     def __init__(self):
         self.api_key = os.getenv("UPSTAGE_API_KEY")
         if not self.api_key:
             raise ValueError("UPSTAGE_API_KEY is not set in environment variables")
+        
         self.client = OpenAI(
             api_key=self.api_key,
             base_url="https://api.upstage.ai/v1/solar"
         )
-
+        self.graph = self.create_node()
 
     def call_api(self, messages: List[Dict[str, str]], model: str = "solar-1-mini-chat") -> Dict[str, Any]:
-        response = self.client.chat.completions.create(
-            model=model,
-            messages=messages
-        )
-        return response.dict()
+        try:
+            response = self.client.chat.completions.create(
+                model=model,
+                messages=messages
+            )
+            response_dict = response.model_dump()
+            return response_dict
+        except Exception as e:
+            logger.error(f"Error in API call: {e}")
+            return {"error": str(e)}
 
-    def talk_general(self, text: str) -> str:
-        messages = [
-            {"role": "system", "content": "You are an AI assistant specialized in contract-related queries."},
-            {"role": "user", "content": text}
-        ]
-        result = self.call_api(messages)
-        if "choices" in result and len(result["choices"]) > 0:
-            return result["choices"][0]["message"]["content"]
-        return ""
-
-    def summarize_text(self, text: str) -> str:
-        messages = [
-            {"role": "system", "content": "You are an AI assistant specialized in extracting key information from contracts and formatting it as structured JSON. Your goal is to provide a concise yet comprehensive summary that helps readers quickly understand the main points and make informed decisions."},
-            {"role": "user", "content": 
-            f"""Please analyze the following contract and structure your summary in JSON format with the following elements:
-                {{
-                    "title": "A unique and easily understandable name for the contract",
-                    "duration": {{
-                        "start_date": "YYYY-MM-DD or None if not specified",
-                        "end_date": "YYYY-MM-DD or 'Ongoing until terminated' if applicable",
-                        "initial_term": "Initial contract duration and renewal terms if applicable"
-                    }},
-                    "parties": [
-                        {{"name": "Party name", "role": "Role in the contract (e.g., Supplier, Distributor)"}},
-                        // Add more as needed
-                    ],
-                    "overview": "A concise overview of the contract's purpose, main provisions, and objectives in 4-5 sentences",
-                    "key_conditions": [
-                        {{
-                            "priority": "high/medium/low",
-                            "description": "Brief description of the condition and important details for running a business(If it's exist)",
-                            "potential_impact": "Potential consequences of non-compliance"
-                        }},
-                        // Add 5-10 key conditions, sorted by priority
-                    ],
-                    "important_dates": [
-                        {{
-                            "priority": "high/medium/low",
-                            "date": "YYYY-MM-DD or description if not a specific date",
-                            "description": "Description of the date's significance"
-                        }},
-                        // Add more as needed, excluding start and end dates
-                    ],
-                    "others": [
-                        {{
-                            "topic": "Brief topic description",
-                            "details": "Important details that don't fit into other categories"
-                        }},
-                        // Add more as needed
-                    ]
-                }}
-                Please ensure that:
-                1. The title is unique, easily identifiable, and reflects the nature of the contract.
-                2. The duration includes renewal terms if specified in the contract.
-                3. The overview provides a clear and concise summary of the contract's main purpose and key provisions.
-                4. Key conditions are listed in order of priority (high to low), focusing on 5-10 most critical conditions that affect contract execution.
-                5. Important dates highlight key milestones and deadlines beyond the start and end dates.
-                6. The 'others' section includes any crucial information that doesn't fit into the above categories but is important for understanding or executing the contract.
-                7. All information is extracted directly from the contract, with no assumptions or external information added.
-                8. The summary captures the most critical information for quick decision-making and risk management.
-
-                Here's the contract text to analyze:
-                {text}
-            """
-            }
-        ]
-        result = self.call_api(messages)
-        if "choices" in result and len(result["choices"]) > 0:
-            return result["choices"][0]["message"]["content"]
-        return ""
-    
     def embed_query(self, text: str) -> List[float]:
         response = self.client.embeddings.create(
-            model="solar-embedding-1-large-passage",
+            model="solar-embedding-1-large-query",
             input=text
         )
         return response.data[0].embedding
@@ -106,64 +46,28 @@ class Solar:
             input=text
         )
         return response.data[0].embedding
+    def check_embedding_dimension(self):
+        test_text = "This is a test sentence for embedding."
+        embedding = self.embed_query(test_text)
+        print(f"Actual embedding dimension: {len(embedding)}")
+        return len(embedding)
 
-    def chunk_text(self, text: str) -> List[Dict[str, str]]:
-        messages = [
-            {"role": "system", "content": """You are an AI assistant specialized in dividing text into logical chunks. Follow these guidelines:
-                1. Maintain semantic coherence within each chunk.
-                2. Keep related information together.
-                3. Respect natural paragraph breaks where possible.
-                4. Aim for chunks of roughly equal length, but prioritize coherence over strict length equality.
-                5. Ensure each chunk can stand alone while maintaining context.
-                6. Ideal chunk size is 100-150 words, but can vary based on content.
-                7. Do not split sentences across chunks unless absolutely necessary.
-                8. Provide a brief title for each chunk that summarizes its main content."""},
-            {"role": "user", "content": f"""Divide the following text into logical chunks following the guidelines:
-
-            {text}
-
-            Output format (JSON):
-            [
-                {{
-                    "content": "chunk content",
-                    "title": "brief title summarizing the chunk"
-                }},
-                ...
-            ]
-
-            Please ensure that:
-            1. Which chunk is important to the contract.
-            2. The chunk is coherent and can stand alone.
-            3. The chunk is roughly equal in length and do not more than 30 words.
-            """}
-        ]
-        result = self.call_api(messages)
-        if "choices" in result and result["choices"]:
-            try:
-                chunks = json.loads(result["choices"][0]["message"]["content"])
-                return chunks
-            except json.JSONDecodeError:
-                print("Error: Invalid JSON format in API response")
-        return [{"content": text, "title": "Full Document"}]
-        
     def analyze_user_query(self, query: str) -> Dict[str, Any]:
         messages = [
-            {"role": "system", "content": "You are an AI assistant specialized in analyzing user queries about contracts."},
+            {"role": "system", "content": "You are an AI assistant specialized in analyzing user queries about procurement contracts."},
             {"role": "user", "content": 
-             f"""Analyze the following user query and provide:
-                1. At least 3 key points to search for in contracts
-                2. Possible related contract types
-                3. At least 5 keywords for searching
+             f"""Analyze the following user query:
 
                 User query: {query}
 
-                Respond in JSON format:
-                If the query is related to contracts, provide the following in JSON format:
+                Provide the following in JSON format:
                 {{
                     "is_contract_related": true,
+                    "query_type": "general/summary/detailed",
                     "key_points": ["point1", "point2", "point3"],
                     "contract_types": ["type1", "type2"],
-                    "keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5"]
+                    "keywords": ["keyword1", "keyword2", "keyword3", "keyword4", "keyword5"],
+                    "focus_areas": ["term1", "section1", "clause1"]
                 }}
 
                 If the query is not related to contracts, respond with:
@@ -171,95 +75,189 @@ class Solar:
                     "is_contract_related": false
                 }}
 
-                Pleas ensure that:
-                1. The response is focused on organizational contracts and internal business operations.
-                2. You accurately determine if the query is about contracts.
-                3. The response is always in valid JSON format.
-                4. Consider the complexity and volume of contracts typically found in large organizations.
+                Ensure the response is always in valid JSON format and focused on organizational contracts and internal business operations.
              """
             }
         ]
+        try:
+            result = self.call_api(messages)
+            if "choices" in result and len(result["choices"]) > 0:
+                content = result["choices"][0]["message"]["content"]
+                json_match = re.search(r'\{.*\}', content, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group(0)
+                    analysis = json.loads(json_str)
+                    return analysis
+                else:
+                    logger.error("No JSON object found in the response")
+            else:
+                logger.error("Unexpected API response structure")
+        except Exception as e:
+            logger.error(f"Error in analyze_user_query: {e}")
+        
+        return {"is_contract_related": False, "query_type": "general", "key_points": [], "contract_types": [], "keywords": [], "focus_areas": []}
+    def talk_general(self, text: str) -> str:
+        messages = [
+            {"role": "system", "content": "You are an AI assistant specialized in contract-related queries."},
+            {"role": "user", "content": text}
+        ]
         result = self.call_api(messages)
         if "choices" in result and len(result["choices"]) > 0:
-            return json.loads(result["choices"][0]["message"]["content"])
-        return {"is_contract_related": False}
+            return result["choices"][0]["message"]["content"]
+        return ""
 
-    def augment_context(self, query: str, search_results: List[Dict[str, Any]]) -> str:
-        relevant_info = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
-        return f"Query: {query}\n\nRelevant Information:\n{relevant_info}"
+    def generate_response(self, query: str, search_results: List[Dict[str, Any]], query_type: str) -> Dict[str, Any]:
+        system_message = {
+            "general": "You are an intelligent AI assistant specialized in answering general questions about procurement contracts.",
+            "summary": "You are an intelligent AI assistant specialized in summarizing procurement contract terms and conditions.",
+            "detailed": "You are an intelligent AI assistant specialized in providing detailed, specific answers and information"
+        }.get(query_type, "You are an intelligent AI assistant and legal expert specialized in answering questions about procurement contracts.")
 
-    def generate_response(self, query: str, search_results: List[Dict[str, Any]]) -> Dict[str, Any]:
-        context = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
-        
-        # print(json.dumps(search_results, indent=2))
+        processed_results = []
+        for idx, result in enumerate(search_results):
+            processed_result = {
+                "document": result.get('document', 'Unknown Document'),
+                "metadata": {
+                    "file_name": result.get('metadata', {}).get('file_name', 'Unknown File'),
+                    "page_number": result.get('metadata', {}).get('page_number', 'Unknown Page'),
+                    "contract_name": result.get('metadata', {}).get('contract_name', 'Unknown Contract'),
+                    "section": result.get('metadata', {}).get('section', 'Unknown Section'),
+                    "clause": result.get('metadata', {}).get('clause', 'Unknown Clause'),
+                },
+                "score": result.get('score', 0.0)
+            }
+            processed_results.append(processed_result)
 
         messages = [
-            {"role": "system", "content": "You are an AI assistant specialized in answering questions about contracts based on search results. Always respond in a valid JSON format."},
+            {"role": "system", "content": system_message},
             {"role": "user", "content": 
-            f"""Based on the user query and search results, provide a detailed answer.
-                Include references to the source documents.
+            f"""Following the user's query and search results, extract and present specific information including exact contract terms.
+                Include detailed references to the source documents, including correct contract name, section, and page number if available.
 
-                Context: {context}
                 User query: {query}
+                Search results: {json.dumps(processed_results, indent=2)}
+
+                Respond in JSON format:
+                {{
+                    "answer": "Your detailed answer here",
+                    "references": [
+                        {{"file_name": "File Name", "page": "Page Number", "document": "Contract Name", "section": "Section X.Y", "clause": "Clause X.Y.Z", "relevance": "Detailed explanation of relevance"}}
+                    ],
+                    "confidence": 0.0,
+                    "summary": "A brief summary of key points (for summary requests)"
+                }}
+
+                Rules:
+                1. Your entire response should be a valid JSON object.
+                2. The "answer" field should contain your detailed response to the user's query, citing specific contract terms and clauses.
+                3. The "references" field should be an array of objects, each containing detailed information about the source.
+                4. The "confidence" field should be a number between 0 and 1, indicating your confidence in the answer based on the available information.
+                5. Ensure all JSON syntax is correct.
+                6. Prioritize accuracy and relevance in your response.
+            """
+            }
+        ]
+        
+        try:
+            result = self.call_api(messages)
+            if "choices" in result and len(result["choices"]) > 0:
+                content = result["choices"][0]["message"]["content"]
+                json_match = re.search(r'\{.*\}', content, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group(0)
+                    json_str = re.sub(r'[\x00-\x1F\x7F-\x9F]', '', json_str)
+                    response_dict = json.loads(json_str)
+                    return response_dict
+                else:
+                    logger.error("No JSON object found in the response")
+            else:
+                logger.error("Unexpected API response structure")
+        except Exception as e:
+            logger.error(f"Error in generate_response: {e}")
+        
+        return {
+            "answer": "Sorry, I couldn't generate a response.",
+            "references": [],
+            "confidence": 0.0,
+            "summary": ""
+        }
+
+    def check_groundedness(self, response: str, search_results: List[Dict[str, Any]]) -> Dict[str, Any]:
+        try:
+            messages = [
+                {"role": "system", "content": "You are an AI assistant specialized in evaluating the groundedness of responses related to procurement contracts."},
+                {"role": "user", "content": f"""
+                Evaluate the groundedness of the following response based on the provided search results.
+                Groundedness means how well the response is supported by the given context and how relevant it is to procurement contracts.
+
+                Response to evaluate:
+                {response}
 
                 Search results:
                 {json.dumps(search_results, indent=2)}
 
-                Respond in the following JSON format:
+                Provide your evaluation in JSON format:
                 {{
-                    "answer": "Your detailed answer here",
-                    "references": [
-                        {{"file_name": "metadata['file_name']", "page": "metadata['page_number']", "relevance": "Explanation of relevance"}}
-                    ],
-                    "confidence": 0.0 
+                    "score": 0.0,  // A float between 0 and 1, where 1 is perfectly grounded and 0 is completely ungrounded
+                    "feedback": "Your detailed feedback here explaining the score",
+                    "relevance_to_procurement": "Explanation of how relevant the response is to procurement contracts",
+                    "accuracy": "Assessment of the response's accuracy based on the search results"
                 }}
-                
-                Rules:
-                1. Your entire response must be a valid JSON object.
-                2. The "answer" field should contain your detailed response to the user's query.
-                3. The "references" field should be an array of objects, each containing "file_name", "page" and "relevance" fields.
-                4. The "confidence" field should be a number between 0 and 1, indicating your confidence in the answer.
-                5. Ensure all JSON syntax is correct, including quotes around strings and proper use of commas.
-                6. Do not include any text outside of the JSON object in your response.
-            """
-            }
-        ]
-        result = self.call_api(messages)
-        if "choices" in result and len(result["choices"]) > 0:
-            return json.loads(result["choices"][0]["message"]["content"])
-        return {"answer": "Sorry, I couldn't generate a response.", "references": [], "confidence": 0.0}
-    
+                """}
+            ]
+
+            result = self.call_api(messages)
+            if "choices" in result and len(result["choices"]) > 0:
+                content = result["choices"][0]["message"]["content"]
+                json_match = re.search(r'\{.*\}', content, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group(0)
+                    evaluation = json.loads(json_str)
+                    return evaluation
+                else:
+                    logger.error("No JSON object found in the groundedness check response")
+            else:
+                logger.error("Unexpected API response structure in groundedness check")
+        except Exception as e:
+            logger.error(f"Error in groundedness check: {e}")
+
+        return {
+            "score": 0.0,
+            "feedback": "Error in groundedness check",
+            "relevance_to_procurement": "Unable to determine",
+            "accuracy": "Unable to assess"
+        }
+
     def self_evaluate(self, query: str, response: Dict[str, Any], search_results: List[Dict[str, Any]]) -> Dict[str, Any]:
-        context = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
-        
         messages = [
-            {"role": "system", "content": "You are an AI assistant specialized in evaluating responses to contract-related queries."},
+            {"role": "system", "content": "You are an AI assistant specialized in evaluating responses to procurement contract-related queries."},
             {"role": "user", "content": 
-             f"""Evaluate the following response to the user query. Consider the relevance, accuracy, and completeness of the answer based on the provided context.
+            f"""Evaluate the following response to the user query about procurement contracts. 
+                Consider the relevance, accuracy, and completeness of the answer based on the provided search results.
 
                 User query: {query}
-
-                Context:
-                {context}
-
+                
+                Search results: {json.dumps(search_results, indent=2)}
                 Response:
                 {json.dumps(response, indent=2)}
 
                 Provide your evaluation in JSON format:
                 {{
-                    "evaluation_score": 0.0,  
+                    "evaluation_score": 0.0,  // A float between 0 and 1
                     "feedback": "Your detailed feedback here",
+                    "relevance_to_query": "Explanation of how relevant the response is to the user's query",
+                    "accuracy": "Assessment of the response's accuracy based on the search results",
+                    "completeness": "Assessment of how complete the response is",
+                    "procurement_specific_value": "Assessment of the response's value in the context of procurement",
                     "suggestions_for_improvement": ["suggestion1", "suggestion2"]
                 }}
-                // evaluation_score should be between 0 and 1
-             """
+            """
             }
         ]
         result = self.call_api(messages)
         if "choices" in result and len(result["choices"]) > 0:
             content = result["choices"][0]["message"]["content"]
             
-            # Try to extract JSON from the content
             try:
                 json_match = re.search(r'\{.*\}', content, re.DOTALL)
                 if json_match:
@@ -268,63 +266,178 @@ class Solar:
                 else:
                     raise ValueError("No JSON object found in the response")
             except json.JSONDecodeError as e:
-                print(f"JSON Decode Error: {e}")
-                print(f"Problematic content: {content}")
+                logger.error(f"JSON Decode Error: {e}")
+                logger.error(f"Problematic content: {content}")
             except ValueError as e:
-                print(f"Value Error: {e}")
-                print(f"Problematic content: {content}")
+                logger.error(f"Value Error: {e}")
+                logger.error(f"Problematic content: {content}")
             
-            # If JSON parsing fails, return a default structure
-            return {
-                "evaluation_score": 0.5,
-                "feedback": "Unable to parse evaluation. Please check the response format.",
-                "suggestions_for_improvement": ["Ensure the response is in correct JSON format"]
-            }
-        
-        return {"evaluation_score": 0.0, "feedback": "Unable to evaluate", "suggestions_for_improvement": []}
-
-    def process_query(self, prompt: str, vector_db) -> Dict[str, Any]:
-        # Analyze the query
-        analysis = self.analyze_user_query(prompt)
-        
-        # Generate query embedding
-        query_embedding = self.embed_query(prompt)
-        
-        # Perform hybrid search
-        search_results = vector_db.hybrid_search(
-            query_embedding=query_embedding,
-            keywords=analysis['keywords'],
-            n_results=5
-        )
-        
-        # Generate response
-        response = self.generate_response(prompt, search_results)
-        
-        # Self-evaluation
-        evaluation = self.self_evaluate(prompt, response, search_results)
-        
-        # If the evaluation score is low, try to improve the response
-        if evaluation['evaluation_score'] < 0.7:
-            improved_results = vector_db.hybrid_search(
-                query_embedding=query_embedding,
-                keywords=analysis['keywords'],
-                n_results=10
-            )
-            improved_response = self.generate_response(prompt, improved_results)
-            improved_evaluation = self.self_evaluate(prompt, improved_response, improved_results)
-            
-            if improved_evaluation['evaluation_score'] > evaluation['evaluation_score']:
-                response = improved_response
-                evaluation = improved_evaluation
-        
-        # Combine response and evaluation
-        final_result = {
-            "answer": response['answer'],
-            "references": response['references'],
-            "confidence": response.get('confidence', 0.0),
-            "evaluation_score": evaluation['evaluation_score'],
-            "feedback": evaluation['feedback'],
-            "suggestions_for_improvement": evaluation['suggestions_for_improvement']
+        return {
+            "evaluation_score": 0.5,
+            "feedback": "Unable to perform a comprehensive evaluation.",
+            "relevance_to_query": "Unable to determine",
+            "accuracy": "Unable to assess",
+            "completeness": "Unable to assess",
+            "procurement_specific_value": "Unable to assess",
+            "suggestions_for_improvement": ["Ensure the response addresses procurement-specific aspects"]
         }
-        
-        return final_result
+
+    def create_node(self):
+        def query_analyzer(state):
+            try:
+                query = state['query']
+                analysis = self.analyze_user_query(query)
+                state['analysis'] = analysis
+                return state
+            except Exception as e:
+                logger.error(f"Error in query_analyzer: {e}")
+                state['error'] = str(e)
+                return state
+
+        def retriever(state):
+            try:
+                query = state['query']
+                analysis = state['analysis']
+                vector_db = state['vector_db']
+                logger.debug(f"Retriever input - Query: {query}, Analysis: {analysis}, Vector DB: {vector_db}")
+                query_embedding = self.embed_query(query)
+                topk_results = vector_db.hybrid_search(
+                    query_embedding=query_embedding,
+                    keywords=analysis.get('keywords', []) + analysis.get('focus_areas', []),
+                    n_results=5
+                )
+                logger.debug(f"Retriever output - Detailed results: {topk_results}")
+                state['topk_results'] = topk_results
+                return state
+            except Exception as e:
+                logger.error(f"Error in retriever: {e}")
+                state['error'] = str(e)
+                return state
+
+        def generator(state):
+            try:
+                query = state['query']
+                topk_results = state['topk_results']
+                query_type = state['analysis']['query_type']
+                
+                logger.debug(f"Generator input - Query: {query}, Query Type: {query_type}")
+                logger.debug(f"Generator input - Detailed Results: {topk_results}")
+                
+                response = self.generate_response(query, topk_results, query_type)
+                logger.debug(f"Generator output - Response: {response}")
+                
+                state['response'] = response
+                return state
+            except Exception as e:
+                logger.error(f"Error in generator: {e}")
+                state['error'] = str(e)
+                return state
+
+        def groundedness_checker(state):
+            try:
+                response = state.get('response', {})
+                topk_results = state.get('topk_results', [])
+                if not response:
+                    logger.warning("No response found in state for groundedness_checker")
+                    return state
+                groundedness = self.check_groundedness(response.get('answer', ''), topk_results)
+                state['groundedness'] = groundedness
+    
+                return state
+            except Exception as e:
+                logger.error(f"Error in groundedness_checker: {e}")
+                state['error'] = str(e)
+                return state
+
+        def evaluator(state):
+            try:
+                query = state['query']
+                response = state.get('response', {})
+                if not response:
+                    logger.warning("No response found in state for evaluation")
+                    return state
+                topk_results = state.get('topk_results', [])
+                evaluation = self.self_evaluate(query, response, topk_results)
+                state['evaluation'] = evaluation
+                return state
+            except Exception as e:
+                logger.error(f"Error in evaluator: {e}")
+                state['error'] = str(e)
+                return state
+
+        workflow = Graph()
+        workflow.add_node("query_analyzer", query_analyzer)
+        workflow.add_node("retriever", retriever)
+        workflow.add_node("generator", generator)
+        workflow.add_node("groundedness_checker", groundedness_checker)
+        workflow.add_node("evaluator", evaluator)
+
+        workflow.set_entry_point("query_analyzer")
+        workflow.add_edge("query_analyzer", "retriever")
+        workflow.add_edge("retriever", "generator")
+        workflow.add_edge("generator", "groundedness_checker")
+        workflow.add_edge("groundedness_checker", "evaluator")
+        workflow.add_edge("evaluator", END)
+
+        return workflow.compile()
+
+    def process_query(self, query: str, vector_db) -> Dict[str, Any]:
+        try:
+            initial_state = {
+                "query": query,
+                "vector_db": vector_db,
+            }
+            logger.debug(f"Initial state: {initial_state}")
+
+            final_state = self.graph.invoke(initial_state)
+            logger.debug(f"Final state: {final_state}")
+
+            if 'response' in final_state:
+                result = final_state['response']
+                result.update({
+                    "groundedness": final_state.get('groundedness', {
+                        "score": 0.5,
+                        "feedback": "",
+                        "relevance_to_procurement": "",
+                        "accuracy": ""
+                    }),
+                    "evaluation": final_state.get('evaluation', {
+                        "evaluation_score": 0.0,
+                        "feedback": "",
+                        "relevance_to_query": "",
+                        "accuracy": "",
+                        "completeness": "",
+                        "procurement_specific_value": "",
+                        "suggestions_for_improvement": []
+                    })
+                })
+                return result
+            elif 'error' in final_state:
+                return {
+                    "answer": f"An error occurred: {final_state['error']}",
+                    "references": [],
+                    "confidence": 0.0,
+                    "summary": "",
+                    "groundedness": {"score": 0.5, "feedback": "Error occurred", "relevance_to_procurement": "N/A", "accuracy": "N/A"},
+                    "evaluation": {"evaluation_score": 0.0, "feedback": "Error occurred"}
+                }
+
+            logger.error("Graph execution completed without producing a complete result")
+            return {
+                "answer": "Sorry, I couldn't generate a complete response due to an unknown error.",
+                "references": [],
+                "confidence": 0.0,
+                "summary": "",
+                "groundedness": {"score": 0.5, "feedback": "Unknown error", "relevance_to_procurement": "N/A", "accuracy": "N/A"},
+                "evaluation": {"evaluation_score": 0.0, "feedback": "Unknown error"}
+            }
+        except Exception as e:
+            logger.error(f"Error in process_query: {e}")
+            return {
+                "answer": f"An error occurred while processing your query: {str(e)}",
+                "references": [],
+                "confidence": 0.0,
+                "summary": "",
+                "groundedness": {"score": 0.5, "feedback": "Exception occurred", "relevance_to_procurement": "N/A", "accuracy": "N/A"},
+                "evaluation": {"evaluation_score": 0.0, "feedback": "Exception occurred"}
+            }
