@@ -52,7 +52,7 @@ class Solar:
                     "key_conditions": [
                         {{
                             "priority": "high/medium/low",
-                            "description": "Brief description of the condition and important details for running a business(If it's exist)",
+                            "description": "Brief detailed explanation of the condition, focusing on critical aspects for decision-making and important details for running a business (If it's exist)",
                             "potential_impact": "Potential consequences of non-compliance"
                         }},
                         // Add 5-10 key conditions, sorted by priority
@@ -81,7 +81,8 @@ class Solar:
                 5. Important dates highlight key milestones and deadlines beyond the start and end dates.
                 6. The 'others' section includes any crucial information that doesn't fit into the above categories but is important for understanding or executing the contract.
                 7. All information is extracted directly from the contract, with no assumptions or external information added.
-                8. The summary captures the most critical information for quick decision-making and risk management.
+                8. The summary captures the most critical information for quick decision-making and risk management, with particular emphasis on detailed and comprehensive key conditions.
+                9. Key conditions are analyzed thoroughly, providing enough detail for stakeholders to understand their obligations and the potential risks without needing to refer back to the full contract text.
 
                 Here's the contract text to analyze:
                 {text}
