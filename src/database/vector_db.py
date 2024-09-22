@@ -6,6 +6,8 @@ import re
 import os
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+from rank_bm25 import BM25Okapi
+from sklearn.feature_extraction.text import CountVectorizer
 
 class VectorDB:
     def __init__(self, clear_on_init=False):
@@ -146,109 +148,135 @@ class VectorDB:
             )
             print("Debug: Semantic search successful")
 
-            # print(semantic_results)
-
             # Process and format the results
             formatted_results = []
-            for idx in range(len(semantic_results['ids'][0])):
-                formatted_results.append({
-                    'id': semantic_results['ids'][0][idx],
-                    'document': semantic_results['documents'][0][idx],
-                    'metadata': semantic_results['metadatas'][0][idx],
-                    'score': 1 - semantic_results['distances'][0][idx]  # Convert distance to similarity score
-                })
+            if semantic_results['ids'] and semantic_results['ids'][0]:  # Check if results exist
+                for idx in range(len(semantic_results['ids'][0])):
+                    formatted_results.append({
+                        'id': semantic_results['ids'][0][idx],
+                        'document': semantic_results['documents'][0][idx],
+                        'metadata': semantic_results['metadatas'][0][idx],
+                        'score': 1 - semantic_results['distances'][0][idx]  # Convert distance to similarity score
+                    })
 
-            # Sort by score (highest first) and return top n_results
-            formatted_results.sort(key=lambda x: x['score'], reverse=True)
-            return formatted_results[:n_results]
+                # Sort by score (highest first) and return top n_results
+                formatted_results.sort(key=lambda x: x['score'], reverse=True)
+                return formatted_results[:n_results]
+            else:
+                print("Debug: No results found in semantic search")
+                return []
 
         except Exception as e:
             print(f"Debug: Semantic search failed with error: {str(e)}")
             return []  # Return an empty list if search fails
 
-    def hybrid_search(self, query_embedding: List[float], keywords: List[str], n_results: int = 5) -> List[Dict[str, Any]]:
-        print(f"Debug: query_embedding length: {len(query_embedding)}")
-        print(f"Debug: keywords: {keywords}")
+    def hybrid_search(self, analysis: Dict[str, Any], n_results: int = 5) -> List[Dict[str, Any]]:
+        # Extract relevant information from the analysis
+        keywords = analysis.get("keywords", [])
+        key_points = analysis.get("key_points", [])
+        contract_types = analysis.get("contract_types", [])
+
+        # Combine all relevant text for semantic search
+        combined_text = " ".join(keywords + key_points + contract_types)
+        
+        if not combined_text.strip():  # Check if combined_text is not empty or just whitespace
+            print("Debug: No valid search terms found in analysis")
+            return []
 
         # Perform semantic search
-        try:
-            semantic_results = self.collection.query(
-                query_embeddings=[query_embedding],
-                n_results=n_results * 2,  # Get more results for re-ranking
-                include=["documents", "metadatas", "distances"]
-            )
-            print("Debug: Semantic search successful")
-        except Exception as e:
-            print(f"Debug: Semantic search failed with error: {str(e)}")
-            semantic_results = {"ids": [[]], "documents": [[]], "metadatas": [[]], "distances": [[]]}
+        query_embedding = self.solar.embed_query(combined_text)
+        semantic_results = self.semantic_search(query_embedding, n_results * 2)  # Get more results initially
 
-        # Perform keyword search without embeddings
-        try:
-            keyword_query = " OR ".join(keywords)
-            keyword_results = self.collection.query(
-                query_texts=[keyword_query],
-                n_results=n_results * 2,  # Get more results for re-ranking
-                include=["documents", "metadatas", "distances"]
-            )
-            print("Debug: Keyword search successful", "results:", keyword_results)
-        except Exception as e:
-            print(f"Debug: Keyword search failed with error: {str(e)}")
-            keyword_results = {"ids": [[]], "documents": [[]], "metadatas": [[]], "distances": [[]]}
+        # Perform keyword search using TF-IDF
+        keyword_results = self.keyword_search(keywords + key_points, n_results * 2)
 
+        # Combine and rank results
+        combined_results = self.combine_and_rank_results(semantic_results, keyword_results, analysis)
 
-        # Perform keyword search with embeddings
-        try:
-            # Embed each keyword
-            keyword_embeddings = [self.embed_query(keyword) for keyword in keywords]
-            
-            # Average the keyword embeddings
-            if keyword_embeddings:
-                avg_keyword_embedding = [sum(e) / len(e) for e in zip(*keyword_embeddings)]
-            else:
-                avg_keyword_embedding = query_embedding  # Fallback to query embedding if no keywords
-
-            keyword_results = self.collection.query(
-                query_embeddings=[avg_keyword_embedding],
-                n_results=n_results * 2,  # Get more results for re-ranking
-                include=["documents", "metadatas", "distances"]
-            )
-            print("Debug: Keyword search with embeddings successful")
-        except Exception as e:
-            print(f"Debug: Keyword search with embeddings failed with error: {str(e)}")
-            keyword_results = {"ids": [[]], "documents": [[]], "metadatas": [[]], "distances": [[]]}
-
-
-        # Combine and re-rank results
-        combined_results = []
-        seen_ids = set()
-
-        for sem_idx, key_idx in zip(range(len(semantic_results['ids'][0])), range(len(keyword_results['ids'][0]))):
-            if sem_idx < len(semantic_results['ids'][0]):
-                sem_id = semantic_results['ids'][0][sem_idx]
-                if sem_id not in seen_ids:
-                    seen_ids.add(sem_id)
-                    combined_results.append({
-                        'id': sem_id,
-                        'document': semantic_results['documents'][0][sem_idx],
-                        'metadata': semantic_results['metadatas'][0][sem_idx],
-                        'score': 0.7 * (1 - semantic_results['distances'][0][sem_idx])  # Normalize and weight semantic score
-                    })
-
-            if key_idx < len(keyword_results['ids'][0]):
-                key_id = keyword_results['ids'][0][key_idx]
-                if key_id not in seen_ids:
-                    seen_ids.add(key_id)
-                    combined_results.append({
-                        'id': key_id,
-                        'document': keyword_results['documents'][0][key_idx],
-                        'metadata': keyword_results['metadatas'][0][key_idx],
-                        'score': 0.3 * (1 - keyword_results['distances'][0][key_idx])  # Normalize and weight keyword score
-                    })
-
-        # Sort by score and return top n_results
-        combined_results.sort(key=lambda x: x['score'], reverse=True)
         return combined_results[:n_results]
-    
+
+    def keyword_search(self, search_terms: List[str], n_results: int) -> List[Dict[str, Any]]:
+        if not search_terms:
+            print("Debug: No search terms provided for keyword search")
+            return []
+
+        all_docs = self.get_all_documents()
+        documents = all_docs['documents']
+        metadatas = all_docs['metadatas']
+
+        if not documents:
+            print("Debug: No documents found in the collection")
+            return []
+
+        # Tokenize the documents
+        vectorizer = CountVectorizer(tokenizer=lambda x: x.split())
+        doc_term_matrix = vectorizer.fit_transform(documents)
+
+        # Convert sparse matrix to list of tokenized documents
+        tokenized_corpus = [doc.split() for doc in documents]
+
+        # Create BM25 object
+        bm25 = BM25Okapi(tokenized_corpus)
+
+        # Perform the search
+        query = " ".join(search_terms)
+        scores = bm25.get_scores(query.split())
+
+        # Sort documents by BM25 score
+        sorted_indexes = scores.argsort()[::-1]
+
+        # Prepare results
+        keyword_results = []
+        for idx in sorted_indexes[:n_results]:
+            keyword_results.append({
+                'id': all_docs['ids'][idx],
+                'document': documents[idx],
+                'metadata': metadatas[idx],
+                'score': scores[idx]
+            })
+
+        return keyword_results
+
+    def combine_and_rank_results(self, semantic_results: List[Dict[str, Any]], 
+                                 keyword_results: List[Dict[str, Any]], 
+                                 analysis: Dict[str, Any]) -> List[Dict[str, Any]]:
+        combined_results = {}
+        
+        # Helper function to calculate relevance score
+        def calculate_relevance(result, analysis):
+            relevance = 0
+            text = result['document'].lower()
+            for keyword in analysis.get('keywords', []):
+                if keyword.lower() in text:
+                    relevance += 1
+            for key_point in analysis.get('key_points', []):
+                if key_point.lower() in text:
+                    relevance += 2
+            for contract_type in analysis.get('contract_types', []):
+                if contract_type.lower() in text:
+                    relevance += 3
+            return relevance
+
+        # Combine and score results
+        for result in semantic_results + keyword_results:
+            if result['id'] not in combined_results:
+                relevance = calculate_relevance(result, analysis)
+                combined_results[result['id']] = {
+                    **result,
+                    'final_score': result['score'] * (1 + 0.1 * relevance)  # Boost score based on relevance
+                }
+            else:
+                # If the document is in both results, take the higher score
+                combined_results[result['id']]['final_score'] = max(
+                    combined_results[result['id']]['final_score'],
+                    result['score'] * (1 + 0.1 * calculate_relevance(result, analysis))
+                )
+
+        # Sort combined results by final_score
+        sorted_results = sorted(combined_results.values(), key=lambda x: x['final_score'], reverse=True)
+
+        return sorted_results
+
     def clear_collection(self):
         """Clear all data in the collection."""
         # Get all IDs in the collection

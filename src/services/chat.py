@@ -192,8 +192,6 @@ class Solar:
     def generate_response(self, query: str, search_results: List[Dict[str, Any]]) -> Dict[str, Any]:
         context = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
         
-        # print(json.dumps(search_results, indent=2))
-
         messages = [
             {"role": "system", "content": "You are an AI assistant specialized in answering questions about contracts based on search results. Always respond in a valid JSON format."},
             {"role": "user", "content": 
@@ -225,10 +223,40 @@ class Solar:
             """
             }
         ]
-        result = self.call_api(messages)
-        if "choices" in result and len(result["choices"]) > 0:
-            return json.loads(result["choices"][0]["message"]["content"])
-        return {"answer": "Sorry, I couldn't generate a response.", "references": [], "confidence": 0.0}
+        
+        try:
+            result = self.call_api(messages)
+            if "choices" in result and len(result["choices"]) > 0:
+                content = result["choices"][0]["message"]["content"]
+                # Try to parse the content as JSON
+                try:
+                    return json.loads(content)
+                except json.JSONDecodeError as json_error:
+                    print(f"JSON Decode Error: {json_error}")
+                    print("Raw content received:")
+                    print(content)
+                    # Attempt to extract valid JSON from the content
+                    import re
+                    json_match = re.search(r'\{.*\}', content, re.DOTALL)
+                    if json_match:
+                        try:
+                            return json.loads(json_match.group())
+                        except json.JSONDecodeError:
+                            pass  # If this fails, we'll fall back to the default response
+            
+            # If we couldn't parse JSON or extract valid JSON, return a default response
+            return {
+                "answer": "I apologize, but I encountered an error while processing the response. Could you please rephrase your question or try again?",
+                "references": [],
+                "confidence": 0.0
+            }
+        except Exception as e:
+            print(f"Error in generate_response: {str(e)}")
+            return {
+                "answer": "I'm sorry, but an error occurred while generating the response. Please try again later.",
+                "references": [],
+                "confidence": 0.0
+            }
     
     def self_evaluate(self, query: str, response: Dict[str, Any], search_results: List[Dict[str, Any]]) -> Dict[str, Any]:
         context = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])

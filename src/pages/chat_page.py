@@ -36,14 +36,18 @@ def render():
                     }
                 else:
 
-                    # result = solar.process_query(prompt, vector_db) ✨
-
                     # Embed the overview query
-                    overview_query_embedding = solar.embed_query(analysis_text)
+                    # overview_query_embedding = solar.embed_query(analysis_text)
 
                     # Perform sementic search
-                    search_results = vector_db.semantic_search(
-                        query_embedding=overview_query_embedding,
+                    # search_results = vector_db.semantic_search(
+                    #     query_embedding=overview_query_embedding,
+                    #     n_results=5
+                    # )
+
+                    # Perform hybrid search
+                    search_results = vector_db.hybrid_search(
+                        analysis=analysis,
                         n_results=5
                     )
 
@@ -58,8 +62,15 @@ def render():
                     print("Evaluation:", evaluation)
 
                     if evaluation['evaluation_score'] < 0.7:
-                        improved_results = vector_db.semantic_search(
-                            query_embedding=overview_query_embedding,
+                        # improve with semantic search
+                        # improved_results = vector_db.semantic_search(
+                        #     query_embedding=overview_query_embedding,
+                        #     n_results=10
+                        # )
+
+                        # improve with hybrid search
+                        improved_results = vector_db.improved_hybrid_search(
+                            analysis=analysis,
                             n_results=10
                         )
                         improved_response = solar.generate_response(prompt, improved_results)
