@@ -69,7 +69,7 @@ def render():
                         # )
 
                         # improve with hybrid search
-                        improved_results = vector_db.improved_hybrid_search(
+                        improved_results = vector_db.hybrid_search(
                             analysis=analysis,
                             n_results=10
                         )
