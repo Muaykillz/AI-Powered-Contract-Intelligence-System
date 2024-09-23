@@ -5,7 +5,7 @@ import json
 import re
 import logging
 from langgraph.graph import Graph, END
-
+import requests
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 #from src.utils.config import load_environment_variables
@@ -22,6 +22,7 @@ class Solar:
             base_url="https://api.upstage.ai/v1/solar"
         )
         self.graph = self.create_node()
+        #self.base_url = "https://api.upstage.ai/v1/solar"
 
     def call_api(self, messages: List[Dict[str, str]], model: str = "solar-1-mini-chat") -> Dict[str, Any]:
         try:
@@ -35,6 +36,24 @@ class Solar:
             logger.error(f"Error in API call: {e}")
             return {"error": str(e)}
 
+    # def call_api(self, messages: List[Dict[str, str]], model: str = "solar-1-mini-chat") -> Dict[str, Any]:
+    #     try:
+    #         headers = {
+    #             "Authorization": f"Bearer {self.api_key}",
+    #             "Content-Type": "application/json"
+    #         }
+    #         url = f"{self.base_url}/chat/completions"
+    #         data = {
+    #             "model": model,
+    #             "messages": messages
+    #         }
+    #         response = requests.post(url, headers=headers, json=data)
+    #         response.raise_for_status()
+    #         return response.json()
+    #     except requests.exceptions.RequestException as e:
+    #         logger.error(f"Error in API call: {e}")
+    #         return {"error": str(e)}
+        
     def embed_query(self, text: str) -> List[float]:
         response = self.client.embeddings.create(
             model="solar-embedding-1-large-query",
@@ -48,6 +67,35 @@ class Solar:
             input=text
         )
         return response.data[0].embedding
+    # def embed_query(self, text: str) -> List[float]:
+    #     return self._create_embedding(text, "solar-embedding-1-large-query")
+
+    # def embed_document(self, text: str) -> List[float]:
+    #     return self._create_embedding(text, "solar-embedding-1-large-passage")
+
+    # def _create_embedding(self, text: str, model: str) -> List[float]:
+    #     try:
+    #         headers = {
+    #             "Authorization": f"Bearer {self.api_key}",
+    #             "Content-Type": "application/json"
+    #         }
+    #         url = f"{self.base_url}/embeddings"
+    #         data = {
+    #             "model": model,
+    #             "input": text
+    #         }
+    #         response = requests.post(url, headers=headers, json=data)
+    #         response.raise_for_status()
+    #         result = response.json()
+            
+    #         if "data" in result and len(result["data"]) > 0:
+    #             return result["data"][0]["embedding"]
+    #         else:
+    #             logger.error("Unexpected response structure for embedding")
+    #             return []
+    #     except requests.exceptions.RequestException as e:
+    #         logger.error(f"Error in embedding API call: {e}")
+    #         return []
     def check_embedding_dimension(self):
         test_text = "This is a test sentence for embedding."
         embedding = self.embed_query(test_text)
@@ -118,28 +166,7 @@ class Solar:
             "detailed": "You are an intelligent AI assistant specialized in providing detailed, specific answers and information"
         }.get(query_type, "You are an intelligent AI assistant and legal expert specialized in answering questions about procurement contracts.")
         context = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
-        #print('context', context)
-        # processed_results = []
-        # for idx, result in enumerate(search_results):
-        #     processed_result = {
-        #         "document": result.get('document', 'Unknown Document'),
-        #         "metadata": {
-        #             "file_name": result.get('metadata', {}).get('file_name', 'Unknown File'),
-        #             "page_number": result.get('metadata', {}).get('page_number', 'Unknown Page'),
-        #             "contract_name": result.get('metadata', {}).get('contract_name', 'Unknown Contract'),
-        #             "section": result.get('metadata', {}).get('section', 'Unknown Section'),
-        #             "clause": result.get('metadata', {}).get('clause', 'Unknown Clause'),
-        #         },
-        #         "score": result.get('score', 0.0)
-        #     }
-        #     processed_results.append(processed_result)
-
-        # if not processed_results:
-        #     return {
-        #         "answer": "I don't have enough information to answer this question. No relevant search results were found.",
-        #         "references": [],
-        #         "confidence": 0.0
-        #     }
+ 
 
         messages = [
             {"role": "system", "content": system_message},
@@ -243,8 +270,8 @@ class Solar:
             "relevance_to_procurement": "Unable to determine",
             
         }
-    def self_evaluate(self, query: str, response: Dict[str, Any]) -> Dict[str, Any]:
-        #context = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
+    def self_evaluate(self, query: str, response: Dict[str, Any], search_results: List[Dict[str, Any]]) -> Dict[str, Any]:
+        context = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
         messages = [
             {"role": "system", "content": "You are an AI assistant specialized in evaluating responses to procurement contract-related queries."},
             {"role": "user", "content": 
@@ -252,6 +279,8 @@ class Solar:
                 Consider the relevance, accuracy, and completeness of the answer based on the provided references.
 
                 User query: {query}
+                Search results: {json.dumps(search_results, indent=2)}
+                Context: {context}
                 Response:
                 {response.get('answer', '')}
 
@@ -375,7 +404,8 @@ class Solar:
                 if not response:
                     logger.warning("No response found in state for evaluation")
                     return state
-                evaluation = self.self_evaluate(query, response)
+                topk_results = state['topk_results']
+                evaluation = self.self_evaluate(query, response, topk_results)
                 state['evaluation'] = evaluation
                 return state
             except Exception as e:
