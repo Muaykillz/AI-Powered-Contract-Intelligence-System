@@ -1,0 +1,483 @@
+query_id,query,gt_answer,response,retrieved_context,context_precision,hallucination,self_knowledge,context_utilization,precision,recall,f1,noise_sensitivity_in_relevant,noise_sensitivity_in_irrelevant,faithfulness
+1,What are the provisions regarding new product development in the ODM Supply Agreement between Organic Preparations and Agape ATP?,"According to the Exclusive ODM Supply Agreement between Organic Preparations Inc. and Agape ATP International Holding Limited, as stated on page 9, section 14.8, the Manufacturer (Organic Preparations Inc.) agrees to develop and offer a minimum of 4 new products per year to the Customer (Agape ATP International Holding Limited). The Customer has the right to consider these new products and would receive exclusive rights for marketing, promotion, and sales of these new products.","According to the ODM Supply Agreement between Organic Preparations Inc. and Agape ATP International
+Holding Limited, the provisions regarding new product development are outlined in section 14.8 on
+page 8 of the document. The Manufacturer agrees to maintain its focus on the design and formulation
+of new products and agrees to provide the Customer with one new product each quarter for a minimum
+of four (4) new products per year. The Manufacturer also agrees to give the Customer exclusive
+rights to the marketing, promotion, and sales of the new products should the Customer decide to take
+on the new products.",ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,1.0,0.375,0.375,1.0,0.625,0.8571428571428571,0.7228915662650602,0.0,0.0,0.25
+2,What is the Servicing Fee structure outlined in the CURO Receivables Finance II Servicing Agreement?,"According to the CURO Receivables Finance II Servicing Agreement, the Servicing Fee is defined in Annex A. As stated in this section, the Servicing Fee for any Servicing Period is calculated as the product of (a) 2.00%, (b) the daily average Receivable Balance of all Receivables serviced under the agreement during the Servicing Period, and (c) a fraction where the numerator is the number of calendar days during the Servicing Period and the denominator is 360.","The Servicing Fee structure outlined in the CURO Receivables Finance II Servicing Agreement is
+described in Document 2. According to Section 9, the Servicer is entitled to receive the Servicing
+Fee for performing the duties and services called for in the Agreement, in accordance with and
+subject to the Loan Agreement. The Servicing Fee is payable on each Payment Date for the immediately
+prior Servicing Period in accordance with Section 2.4 of the Loan Agreement. Any opinion, filing, or
+other services performed by the Servicer that generate additional costs shall be at the expense of
+the Owner.","CURO Receivables Finance II, LLC Servicing Agreement, CURO Receivables Finance II, LLC Servicing
+Agreement",1.0,0.5833333333333334,0.0,0.3333333333333333,0.08333333333333333,0.3333333333333333,0.13333333333333333,0.3333333333333333,0.0,0.4166666666666667
+3,What is the process for terminating the Nationwide Mutual Funds Servicing Agreement?,"According to the Nationwide Mutual Funds Servicing Agreement, termination can occur in two ways. As stated in Section 9 of the agreement, either party can terminate the contract with at least 90 days written notice. Additionally, the agreement can be terminated immediately in the event of a material breach by either party. The Fund also reserves the right to terminate the agreement with 60 days written notice if voted by a majority of the Disinterested Trustees.","The process for terminating the Nationwide Mutual Funds Servicing Agreement is outlined in Document
+1. According to the contract, the Agreement may be terminated as to the payments made on behalf of
+the Funds at any time, without the payment of any penalty, by the vote of a majority of the members
+of the Board of Trustees and who have no direct or indirect financial interest in the operation of
+the Administrative Services Plan or in any related agreements to the Administrative Services Plan
+(""Disinterested Trustees"") or by a majority of the outstanding voting securities of a Fund, on at
+least sixty (60) days written notice to the parties to this Agreement. In addition, either you or
+Nationwide may terminate this Agreement (i) upon the material breach of this Agreement by the other
+or (ii) for any reason on at least ninety (90) days written notice to the other party. (Document 1,
+page 2, chunk 4)",Nationwide Mutual Funds Servicing Agreement,1.0,0.36363636363636365,0.18181818181818182,0.5,0.2727272727272727,0.8,0.4067796610169491,0.36363636363636365,0.0,0.45454545454545453
+4,What are the specific CBD and THC content requirements for the hemp biomass in the Gridiron-Shi Farms Hemp Biomass Supply Agreement?,"According to the Gridiron-Shi Farms Hemp Biomass Supply Agreement, as stated in Section 1.A on page 1, the hemp biomass must contain a minimum of six percent (6%) total Cannabidiol (CBD/and or CBDA) and less than three percent (3%) total THC content.","An unexpected error occurred: Solar.increase_n_results() takes 3 positional arguments but 4 were
+given",,,,,,,,,,,
+5,What is the minimum d-limonene content required for the Terpene Product in the FCC-Flotek Terpene Supply Agreement 2019-2023?,"According to the FCC-Flotek Terpene Supply Agreement 2019-2023, as stated in Section 1 on page 1, the Terpene Product must have a minimum d-limonene content of 94%.","I'm sorry, but I cannot provide a detailed answer as the provided search results do not match the
+query about the FCC-Flotek Terpene Supply Agreement 2019-2023. The search results seem to be from
+other contracts and do not contain the specific information requested.",,,,,,,,,,,
+6,What is the duration of IT services provided under the RGHI-RCP Transition Services Agreement?,"According to the RGHI-RCP Transition Services Agreement, the IT services are generally provided for 24 months from the Commencement Date. As stated in Exhibit A, Section G1 of the contract, ""All services in group 24 months from the Commencement Date. Termination can only be as per an agreed Migration Plan.""","The specified duration for the IT services provided under the RGHI-RCP Transition Services Agreement
+is not mentioned in the provided search results.","ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+Women.com Networks, Inc. and eDiets.com, Inc. Co-Branding Agreement, Nationwide Mutual Funds
+Servicing Agreement, CURO Receivables Finance II, LLC Servicing Agreement, Women.com Networks, Inc.
+and eDiets.com, Inc. Co-Branding Agreement, ODM-SUPPLY AGREEMENT between Organic Preparations Inc.
+and Agape ATP International Holding Limited, Nationwide Mutual Funds Servicing Agreement, Women.com
+Networks, Inc. and eDiets.com, Inc. Co-Branding Agreement, CURO Receivables Finance II, LLC
+Servicing Agreement, Women.com Networks, Inc. and eDiets.com, Inc. Co-Branding Agreement",0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7,"What is the duration of the Integrity Short Term Government Fund Distribution Agreement, and is there an automatic renewal clause?","According to the Integrity Short Term Government Fund Distribution Agreement, as stated in Section 7.1 on page 7, the initial contract period is from January 18, 2020, to January 18, 2022. The agreement includes an automatic renewal clause, which states that it ""shall continue automatically for successive annual periods ending on January 18th of each year,"" subject to annual approval by the Fund's Board of Trustees and Qualified Trustees.","The duration of the Integrity Short Term Government Fund Distribution Agreement is not specified in
+the provided search results. However, the search results do mention various durations and renewal
+clauses in other agreements. For example, Document 1 states that the agreement shall remain
+effective for two (2) years from the Effective Date and shall automatically renew for additional
+successive terms of twelve (12) months each, unless either party notifies the other in writing at
+least sixty (60) days prior to the end of the Initial Term. Document 4 states that this agreement
+will be automatically renewed at the end of every ten (10) year term, with each subsequent term of
+renewal being for a ten (10) year term. A six (6) months notice must be given by either party of
+their intention to terminate relations due to any reason other than breach of this agreement. There
+is no explicit mention of an automatic renewal clause in the Integrity Short Term Government Fund
+Distribution Agreement in the provided search results.","Women.com Networks, Inc. and eDiets.com, Inc. Co-Branding Agreement, ODM-SUPPLY AGREEMENT between
+Organic Preparations Inc. and Agape ATP International Holding Limited",0.0,0.5,0.125,0.0,0.375,0.0,0.0,0.0,0.125,0.375
+8,What are the specific sponsorship rights granted to Constellation in the Constellation Energy Sponsorship and Services Agreement for HOF Village?,"According to the Constellation Energy Sponsorship and Services Agreement for HOF Village, the specific sponsorship rights granted to Constellation are detailed in Exhibit E of the contract. As stated in Section 3.1 on page 4, these rights include advertising rights and other benefits for the entire Term of the agreement, except as otherwise set forth in Exhibit E. The exact details of these rights are not provided in the main body of the contract, but are referenced to be in the exhibit.","Based on the provided search results, Constellation Energy Sponsorship and Services Agreement for
+HOF Village is not among the contracts. However, we can provide information on marketing and
+promotional rights granted to other parties in the contracts. For example, in the ODM-SUPPLY
+AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited (Document
+1), the Manufacturer grants exclusive rights to the Customer for the term of ten (10) years from the
+date of the signing of this agreement and for an indefinite period upon the customer fulfilling the
+minimum annual purchase requirement as listed in Schedule B. of this agreement. In the Women.com
+Networks, Inc. and eDiets.com, Inc. Co-Branding Agreement (Document 2 and 3), Women.com agrees to
+give eDiets the right of first refusal to participate in all diet and diet-counseling related
+promotion opportunities created or otherwise made available by Women.com on channels or sub-channels
+created after the Effective Date of this Agreement. Also, in the same agreement, Women.com agrees to
+give eDiets the right to use the Women.com Marks during the Term solely in connection with the
+fulfillment of eDiets' obligations under this Agreement and in advertising and marketing collateral
+related to this Agreement. Each party agrees to refrain from all uses of the other party's Marks to
+which the other party objects. The provisions of Sections 4, 8, 10, 11, 12, 13, 14, and 15, as well
+as all defined terms, will survive any expiration or earlier termination of this Agreement for any
+reason.","ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+Women.com Networks, Inc. and eDiets.com, Inc. Co-Branding Agreement, Women.com Networks, Inc. and
+eDiets.com, Inc. Co-Branding Agreement",0.0,0.38461538461538464,0.0,0.0,0.0,0.0,0.0,0.0,0.6153846153846154,0.6153846153846154
+9,What is the pricing mechanism for Butyl rubber products in the ExxonMobil-West Pharmaceutical Global Butyl Rubber Supply Agreement 2019-2023?,"According to the ExxonMobil-West Pharmaceutical Global Butyl Rubber Supply Agreement 2019-2023, the pricing mechanism is subject to adjustment based on Brent crude oil price fluctuations. As stated in the contract overview (section 5), the agreement includes specific pricing mechanisms. Furthermore, the key conditions (section 6, item 2) explicitly mention that pricing is subject to adjustment based on Brent crude oil price fluctuations.","Based on the provided search results, I could not find any specific contract clause within the
+ExxonMobil-West Pharmaceutical Global Butyl Rubber Supply Agreement 2019-2023 that outlines the
+pricing mechanism for Butyl rubber products. However, it is possible that such information may be
+found in other documents or agreements between the two parties. Unfortunately, the search results
+provided do not include the ExxonMobil-West Pharmaceutical Global Butyl Rubber Supply Agreement
+2019-2023, but rather, an ODM-Supply Agreement between Organic Preparations Inc. and Agape ATP
+International Holding Limited.","ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+Women.com Networks, Inc. and eDiets.com, Inc. Co-Branding Agreement",0.0,0.2,0.0,0.0,0.4,0.0,0.0,0.0,0.4,0.8
+10,What are the specific warranty conditions for products sold under the Reynolds-Pactiv Master Supply Agreement 2019?,"According to the Reynolds-Pactiv Master Supply Agreement 2019, as stated in page 5, Section 6 ""Specific Product Warranties,"" the seller warrants that each product at the time of delivery will be in new, undamaged condition, free of defects, manufactured and stored at approved facilities, compliant with applicable laws including FDA regulations, conform to specifications, be fit for purpose, have good title, and not infringe on any third-party intellectual property rights. The contract specifies that these warranties are the sole remedies for breach of warranty.","The specific warranty conditions for products sold under the Reynolds-Pactiv Master Supply Agreement
+2019 are not provided in the given search results. However, based on the provided documents, it
+appears that the manufacturer is responsible for ensuring compliance with various standards and
+regulations, including manufacturing standards, packaging laws and regulations, and international
+standards. The manufacturer also covenants to be willing and able to perform any and all of its
+obligations under the agreement and indemnifies the customer for any intellectual property claims.
+The customer is responsible for inspecting products upon receipt and may reject any defective
+product within seven days of receipt. The manufacturer further guarantees that the products are
+packaged in such a way as to be protected from any foreseeable damage during shipment.","ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited",0.0,0.7777777777777778,0.2222222222222222,0.0,0.2222222222222222,0.18181818181818182,0.19999999999999998,0.0,0.0,0.0
+11,What is the penalty for late delivery according to the Loha Supply Chain Management Framework Agreement?,"According to the Loha Supply Chain Management Framework Agreement, as stated in page 5, section 18, the penalty for late delivery is charged at 0.5% for every seven days, with odd days less than seven counted as seven days. The total penalty cannot exceed 5% of the value of the goods involved in the late delivery. If the delivery is more than ten weeks late, the buyer has the right to cancel the contract, and the seller must pay a penalty of 30% of the total goods price.","An unexpected error occurred: Solar.increase_n_results() takes 3 positional arguments but 4 were
+given",,,,,,,,,,,
+12,"As a distributor, I plan to launch new products in foreign markets. What factors should be considered based on existing contracts?","Based on the existing contracts, if a distributor plans to launch new products in foreign markets, the following factors should be considered: Product Registration: According to the Exclusive ODM Supply Agreement between Organic Preparations Inc. and Agape ATP International Holding Limited, page 3, section 2.1, the Customer (in this case, the distributor) is responsible for registering the products in the territories where they will be marketed. Compliance with Local Laws: As per the agreement on page 3, sections 3.1 and 3.3, the Manufacturer must comply with local laws and regulations, including packaging laws in all territories. The distributor should ensure that new products meet these requirements. Product Liability Insurance: According to the agreement on page 6, section 6.2, the distributor must maintain product liability insurance for all products sold. Minimum Purchase Quantities: As specified in Schedule B of the agreement, there are minimum annual purchase requirements for each product. The distributor should consider whether they can meet these sales targets for new products. Market Penetration: The agreement stipulates on page 4, section 4.3, that the Customer must endeavor to achieve maximum market penetration. This should be considered when launching new products.","As a distributor planning to launch new products in foreign markets, you should consider the
+following factors based on existing contracts:   1. Compliance with Local Laws and Regulations: Both
+parties should ensure they are in compliance with all local laws and regulations in the territories
+where the products will be sold. This includes laws related to business practice, workplace
+relations, safety, and taxation (Document 3, Page 3, Chunk 1).  2. Manufacturing Standards: The
+manufacturer should maintain compliance with all international standards in production and
+manufacturing (Document 6, Page 2, Chunk 2).  3. Packaging Regulations: The manufacturer should
+comply with any and all packaging laws and regulations in all territories (Document 6, Page 2, Chunk
+2).  4. Ability to Perform: Both parties should confirm their willingness and ability to perform any
+and all obligations under the agreement (Document 3, Page 3, Chunk 1; Document 6, Page 2, Chunk 2).
+5. Intellectual Property Rights: The manufacturer should confirm that the products are clear of any
+intellectual property claims by third parties and that the customer has full rights to sell and
+market the products worldwide. The manufacturer should also indemnify the customer for any
+intellectual property-related issues (Document 6, Page 2, Chunk 2).  6. New Product Development: The
+manufacturer should maintain its focus on the design and formulation of new products and provide the
+customer with at least four new products per year. The customer should have exclusive rights to
+market, promote, and sell the new products (Document 1, Page 8, Chunk 003).  7. Market Penetration:
+The customer should make its best efforts to establish and develop a market for the products in the
+territories with maximum market penetration (Document 3, Page 3, Chunk 1).  8. Product Liability
+Insurance: Both the manufacturer and the customer should maintain product liability insurance to
+cover any costs, expenses, loss, or damages resulting from any act, neglect, or default of the
+company (Document 8, Page 5, Chunk 1).  9. Breach and Termination: Each party should notify the
+other immediately of any breach of the agreement, and the breaching party should rectify the breach
+if possible (Document 8, Page 7, Chunk 1).  10. Composition of Medical Team: The composition of the
+medical team is considered the intellectual property of the manufacturer, and any subsequent
+consultations in that capacity are also protected (Document 5, Page 3, Chunk 2).  11. Sale of
+Products: The manufacturer should not sell any product listed in the agreement or any product name
+to any other party without prior written consent from the customer (Document 5, Page 3, Chunk 2).
+12. Additional Indemnities: The manufacturer should provide additional indemnities as required by
+the agreement (Document 9, Page 1, Chunk 1).","ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited",1.0,0.5,0.125,0.5555555555555556,0.21875,0.5789473684210527,0.31752577319587627,0.28125,0.0,0.375
+13,"As the Servicer, what key responsibilities should I be aware of in managing the Serviced Assets under this agreement?","Based on the existing contract, as the Servicer, you should consider the following key responsibilities: Adhere to the Servicing Standard, which requires reasonable care and compliance with Applicable Law. This is outlined in Section 1(b) of the agreement. Collect and process all collections on Serviced Assets according to the Loan Agreement, as mentioned in Section 1(d). Prepare and deliver required reports, including Monthly Servicing Reports, as per Section 3(a). Maintain appropriate books and records that are accessible for inspection, as stated in Section 2(f). Comply with all applicable laws, including anti-money laundering and sanctions regulations, as detailed in Sections 11(h) and 11(i). You should also be aware that you may appoint Sub-Servicers, but you remain liable for their performance, as outlined in Section 10(a).","As the Servicer, you have several key responsibilities in managing the Serviced Assets under this
+agreement. According to the CURO Receivables Finance II, LLC Servicing Agreement (Contract Name:
+CURO Receivables Finance II, LLC Servicing Agreement, Page Number: 1), you are responsible for
+servicing and administering each related Serviced Asset for the benefit of the Owner and shall
+extend, amend, or otherwise modify such Serviced Asset by complying with the Servicing Standard.
+This includes collecting and processing all collections on the Serviced Assets in accordance with
+the terms and conditions set forth in Section 2.3 of the Loan Agreement and the Servicing Multi-
+Party Agreement (Page Number: 1). Additionally, you may appoint one or more Persons as a sub-
+servicer (each a ""Sub-Servicer"") with respect to some or all of the Serviced Assets to perform any
+of the Servicer's obligations hereunder from time to time in its sole discretion, subject to certain
+conditions (Page Number: 3). You shall remain obligated and be liable to the Owner for the servicing
+and administering of the Serviced Assets in accordance with the provisions hereof without diminution
+of such obligation and liability by virtue of the appointment of such Sub-Servicer (Page Number: 3).
+You shall also administer, perform, or supervise the performance of such other activities in
+connection with the Serviced Assets (including the Loan Documents) as are not covered by any of the
+foregoing provisions and are reasonably within the capability of the Servicer (Page Number: 1).","CURO Receivables Finance II, LLC Servicing Agreement, CURO Receivables Finance II, LLC Servicing
+Agreement",1.0,0.3333333333333333,0.0,0.36363636363636365,0.4166666666666667,0.2777777777777778,0.33333333333333337,0.25,0.0,0.6666666666666666
+14,"As a Servicing Agent, what should I consider regarding the protection of customer information under this agreement?","Based on the existing contracts, as a Servicing Agent, you should consider implementing robust data protection measures. The Nationwide Mutual Funds Servicing Agreement emphasizes the importance of customer information protection in Section 15. You should: Establish and maintain safeguards against unauthorized access, destruction, loss, or alteration of Customer Information. Implement a comprehensive written information security program to safeguard Customer Information. Ensure compliance with Privacy Laws, including the Gramm-Leach-Bliley Act and Regulation S-P. Be prepared to promptly notify Nationwide in the event of any improper disclosure of Customer Information. Remember, the contract defines Customer Information broadly, including personal and financial data of Fund customers.","As a Servicing Agent, you should consider implementing and maintaining a comprehensive written
+information security program that contains appropriate security measures to safeguard customer
+information. This includes protecting such customer information against cyber attacks. The
+provisions of the Privacy Program section of the agreement shall survive the termination of the
+agreement. Additionally, you should not use any identifiable information, including consumers'
+nonpublic personal information and related account performance and status information, for any
+purpose other than as provided in the agreement. You should also maintain appropriate books of
+account and records relating to services performed under the agreement, which books of account and
+records shall be accessible for inspection by the Owner at any time during normal business hours.","Nationwide Mutual Funds Servicing Agreement, CURO Receivables Finance II, LLC Servicing Agreement,
+CURO Receivables Finance II, LLC Servicing Agreement",1.0,0.1,0.0,0.42857142857142855,0.3,0.36363636363636365,0.32876712328767127,0.6,0.0,0.9
+15,"As a processor working with Gridiron BioNutrients, what should I consider regarding the delivery of the hemp biomass?","Based on the existing contracts, as a processor working with Gridiron BioNutrients, you should consider the following: 1. Gridiron will determine which processing facility will receive the hemp biomass. 2. According to Section 1.F of the Gridiron-Shi Farms Hemp Biomass Supply Agreement (page 1), Shi Farms is responsible for delivering the biomass to the processor determined by Gridiron. 3. You should ensure that you have the capacity to receive and process 30,000 lbs of hemp biomass. 4. Be prepared to potentially conduct a third-party analysis of the biomass if Gridiron requests it, as mentioned in Section 1.F. 5. Verify that the received biomass meets the quality standards specified in the contract, including CBD/CBDA content, THC content, and absence of contaminants.","As a processor working with Gridiron BioNutrients, you should consider the following regarding the
+delivery of the hemp biomass:   1. The products should be suitably packed for shipment in the
+Manufacturer's standard shipping cartons, marked for shipment to the destination specified in the
+Customer's Purchase Order, and delivered to the destination Ex W orks.  2. The Customer agrees to
+pay freight, insurance, and any associated expenses.  3. The Customer agrees to help the
+Manufacturer select the most appropriate carrier for each of the Territories.  4. The Manufacturer
+guarantees that the Products, when shipped, are packaged in such a way as to be protected from any
+foreseeable damage during shipment.  5. The Customer shall inspect all Products promptly upon
+receipt thereof and may reject any defective Product within seven (7) days after receipt, provided
+that the Customer notifies the Manufacturer of its rejection and either requests to destroy in field
+for credit of the value of the defective product and the associated shipping costs (with approval)
+or requests a Return Material Authorization (""RMA"") number and returns the product within seven (7)
+days of receipt of the RMA number.  6. The Manufacturer shall credit to the Customer the value of
+the defective product and the associated shipping costs if the returned Product is defective and
+properly rejected by the Customer.  7. The payment terms are not specified in the provided
+documents.","ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited",1.0,0.42857142857142855,0.0,0.6666666666666666,0.0,0.3,0.0,0.5714285714285714,0.0,0.5714285714285714
+16,"As a manufacturer, what should I consider regarding production capacity to fulfill this contract?","Based on the existing contract, as a manufacturer, you should consider maintaining adequate manufacturing capacity at your facility to meet the supply requirements. According to Section 9 on page 3 of the FCC-Flotek Terpene Supply Agreement 2019-2023, FCC is required to maintain sufficient manufacturing capacity and staffing throughout the Term to manufacture the Terpene Product at the Winter Haven, Florida facility. You should also be prepared to handle orders up to the Maximum Quantity of [redacted] pounds per Year, as specified in Section 1 on page 1.","As a manufacturer, you should consider the following regarding production capacity to fulfill this
+contract:1. Compliance with local laws and regulations: You should ensure that your manufacturing
+processes are in compliance with all local laws and regulations, including those related to business
+practice, workplace relations, safety, and taxation (Document 1, page 2, contract name: ODM-SUPPLY
+AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited).2.
+Manufacturing standards: You should maintain compliance with all international standards in
+production and manufacturing (Document 1, page 2, contract name: ODM-SUPPLY AGREEMENT between
+Organic Preparations Inc. and Agape ATP International Holding Limited).3. Packaging laws and
+regulations: You should ensure that your packaging is in compliance with any and all packaging laws
+and regulations in all territories (Document 1, page 2, contract name: ODM-SUPPLY AGREEMENT between
+Organic Preparations Inc. and Agape ATP International Holding Limited).4. Ability to perform: You
+should covenant that you are willing and able to perform any and all of your obligations under the
+agreement (Document 1, page 2, contract name: ODM-SUPPLY AGREEMENT between Organic Preparations Inc.
+and Agape ATP International Holding Limited).5. Intellectual property: You should covenant that the
+products are clear of any intellectual property claims by third parties and that the customer has
+full rights to sell and market the products worldwide. You should also indemnify the customer for
+any intellectual property issues (Document 1, page 2, contract name: ODM-SUPPLY AGREEMENT between
+Organic Preparations Inc. and Agape ATP International Holding Limited).6. Documentation and
+information: You should supply the customer with all documentation and information relating to the
+products and their manufacture as required for registration in the territories (Document 2, page 2,
+contract name: ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International
+Holding Limited).7. Compliance with local laws and regulations: You should ensure that your
+manufacturing processes are in compliance with any and all local laws and regulations (Document 3,
+page 2, contract name: ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP
+International Holding Limited).8. Payment terms: You should be aware of the agreed payment terms,
+which may include a requirement to pay 50% of the total order cost on placement of the customer's
+order and the remaining 50% prior to the goods leaving the warehouse (Document 10, page 5, contract
+name: ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding
+Limited).9. New products: You should maintain your focus on the design and formulation of new
+products and agree to provide the customer with one new product each quarter for a minimum of four
+(4) new products per year (Document 3, page 8, contract name: ODM-SUPPLY AGREEMENT between Organic
+Preparations Inc. and Agape ATP International Holding Limited).10. Compliance with local laws and
+regulations: You should ensure that your manufacturing processes are in compliance with any and all
+local laws and regulations (Document 4, page 3, contract name: ODM-SUPPLY AGREEMENT between Organic
+Preparations Inc. and Agape ATP International Holding Limited).11. Sale of products: You should
+covenant not to sell any product listed in the agreement or product name to any other party without
+prior written consent of the customer (Document 4, page 3, contract name: ODM-SUPPLY AGREEMENT
+between Organic Preparations Inc. and Agape ATP International Holding Limited).12. Compliance with
+local laws and regulations: You should ensure that your manufacturing processes are in compliance
+with any and all local laws and regulations (Document 5, page 4, contract name: ODM-SUPPLY AGREEMENT
+between Organic Preparations Inc. and Agape ATP International Holding Limited).13. Payment terms:
+You should be aware of the agreed payment terms, which may include a requirement to pay 50% of the
+total order cost on placement of the customer's order and the remaining 50% prior to the goods
+leaving the warehouse (Document 6, page 4, contract name: ODM-SUPPLY AGREEMENT between Organic
+Preparations Inc. and Agape ATP International Holding Limited).14. Compliance with local laws and
+regulations: You should ensure that your manufacturing processes are in compliance with any and all
+local laws and regulations (Document 7, page 7, contract name: ODM-SUPPLY AGREEMENT between Organic
+Preparations Inc. and Agape ATP International Holding Limited).15. Compliance with local laws and
+regulations: You should ensure that your manufacturing processes are in compliance with any and all
+local laws and regulations (Document 8, page 8, contract name: ODM-SUPPLY AGREEMENT between Organic
+Preparations Inc. and Agape ATP International Holding Limited).16. Compliance with local laws and
+regulations: You should ensure that your manufacturing processes are in compliance with any and all
+local laws and regulations (Document 9, page 9, contract name: ODM-SUPPLY AGREEMENT between Organic
+Preparations Inc. and Agape ATP International Holding Limited).17. Compliance with local laws and
+regulations: You should ensure that your manufacturing processes are in compliance with any and all
+local laws and regulations (Document 10, page 9, contract name: ODM-SUPPLY AGREEMENT between Organic
+Preparations Inc. and Agape ATP International Holding Limited).","ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited",1.0,0.5217391304347826,0.021739130434782608,0.25,0.043478260869565216,0.16666666666666666,0.06896551724137931,0.43478260869565216,0.0,0.45652173913043476
+17,"As the new CFO of RCP, what should I be aware of regarding financial reporting and compliance during the transition period?","Based on the existing contracts, as the new CFO of RCP, you should consider the following: 1. RGHI will provide support for SEC reporting and compliance for 24 months from the Commencement Date, as stated in Exhibit A, Section G8.4 of the RGHI-RCP Transition Services Agreement. 2. You should work on establishing RCP's own financial reporting systems and processes during this period. 3. Pay attention to the SOX compliance support provided by RGHI, as mentioned in Section G3.8 of Exhibit A, which lasts for 24 months. 4. Be aware of the various financial services handover processes, including treasury, tax, and audit support, detailed in Sections G3 and G4 of Exhibit A. 5. Ensure that RCP is prepared to take over all financial responsibilities by the end of the transition period.","As the new CFO of RCP, you should be aware of financial reporting and compliance requirements during
+the transition period, as outlined in the provided contracts. These include providing written
+reports, maintaining records, complying with anti-money laundering regulations, and cooperating with
+other parties for compliance investigations. Specifically, you should review Section 12 of the CURO
+Receivables Finance II, LLC Servicing Agreement, which discusses notices and communication
+requirements, as well as the Nationwide Mutual Funds Servicing Agreement, which outlines shareholder
+information requirements and anti-money laundering provisions.","CURO Receivables Finance II, LLC Servicing Agreement, Nationwide Mutual Funds Servicing Agreement",0.0,0.6923076923076923,0.3076923076923077,0.0,0.3076923076923077,0.09090909090909091,0.14035087719298245,0.0,0.0,0.0
+18,"As the distributor (Integrity), what are my main responsibilities under this contract?","Based on the existing contract, as the distributor (Integrity), you should consider the following key responsibilities: Act as the principal underwriter for the distribution of the Fund's shares, as outlined in Section 1.1 on page 1. Use your best efforts to solicit orders for the sale of shares at the public offering price, as stated in Section 1.2 on page 1. Comply with all applicable laws, rules, and regulations, including those made by the SEC, as mentioned in Section 1.3 on page 1. Provide customer service by responding to telephone questions about the Fund during normal business hours, as per Section 1.4 on page 1. Bear all expenses related to distribution activities, as detailed in Section 1.8 on pages 2-3. Prepare and deliver regular reports on distribution expenses to the Fund's Treasurer and Investment Adviser, as specified in Section 1.9 on page 3. It's crucial to familiarize yourself with these responsibilities and ensure compliance throughout the contract period.","As the distributor (Integrity), your main responsibilities under this contract include:   -
+Maintaining product liability insurance throughout the term of the agreement to cover the liability
+of the Customer and to indemnify the Customer from any costs, expenses, loss or damages resulting
+from any act, neglect or default of the company. (Document 1, Page 5, Section 6.1) - Maintaining
+product liability insurance at all times during the term of the agreement, covering all products
+sold by the Manufacturer to the Customer and naming the Manufacturer as Additional Insured.
+(Document 1, Page 5, Section 6.2) - Notifying the other party immediately of any breach of the
+agreement. (Document 1, Page 5, Section 7.1) - Rectifying any breach of the agreement. (Document 1,
+Page 5, Section 7.2) - Complying with all Local Laws and Regulations, including laws relating to
+business practice, workplace relations, safety and taxation. (Document 3, Page 3, Section 4.1) -
+Being willing and able to perform any and all of its obligations under the agreement. (Document 3,
+Page 3, Section 4.2) - Giving its best endeavors to establish and develop a market for the Products
+in the Territories with maximum market penetration. (Document 3, Page 3, Section 4.3) - Offering the
+Customer the first right of refusal to purchase the intellectual property for the products listed in
+Schedule A of this agreement based upon agreed terms. (Document 6, Page 7, Section 13.1) - Granting
+exclusive rights to the Customer for the term of ten (10) years from the date of the signing of this
+agreement and for an indefinite period upon the customer fulfilling the minimum annual purchase
+requirement as listed in Schedule B of this agreement. (Document 6, Page 7, Section 13.2) - Being an
+independent contractor and having no authority to act as agent for either Nationwide or the Funds in
+any matter or in any respect. (Document 7, Page 1, Section 5)","ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+Women.com Networks, Inc. and eDiets.com, Inc. Co-Branding Agreement, ODM-SUPPLY AGREEMENT between
+Organic Preparations Inc. and Agape ATP International Holding Limited, Nationwide Mutual Funds
+Servicing Agreement",0.2,0.8,0.0,0.125,0.0,0.07142857142857142,0.0,0.1,0.1,0.2
+19,"As the energy manager for HOF Village, how should I approach energy procurement under this contract?","Based on the existing contract, as the energy manager for HOF Village, you should consider the following: 1. Exclusively purchase commodity electricity and gas from Constellation, as stipulated in Section 2.2 on page 3. However, be aware of exceptions, particularly pre-existing agreements with Johnson Controls, Inc. 2. Work closely with Constellation to develop a comprehensive energy strategy, as mentioned in Section 1.1(a) on page 1. This should include sustainable product solutions, competitive market pricing, and periodic reporting and analytics. 3. Utilize the Supplier Component Questionnaire (Exhibit B) when determining pricing for energy products and services. 4. Be prepared to provide credit approval or a surety bond if purchasing through an affiliate, as outlined in Section 1.1(b) on page 2. 5. Keep in mind the commitment to contract for a minimum of [REDACTED] in EME financing, with specific amounts required in [REDACTED] and [REDACTED], as stated in Section 2.4 on page 4.","As the energy manager for HOF Village, you should approach energy procurement under this contract by
+following the guidelines and standards provided by the contracting party, as outlined in Appendix B.
+This includes executing all purchase and redemption orders at net asset value, plus or minus any
+applicable sales charges, in accordance with the terms and conditions of a Fund's then-current
+prospectus and Statement of Additional Information. Additionally, you should ensure that your
+internal controls for accepting, processing, and transmitting purchase, exchange, and redemption
+orders are reasonably designed to comply with Section 22(c) of the Investment Company Act of 1940
+(the ""1940 Act"") and Rule 22c-1 thereunder. You should also maintain compliance with all local laws
+and regulations related to business practice, workplace relations, safety, and taxation, as well as
+any other specific requirements outlined in the contract.","Nationwide Mutual Funds Servicing Agreement, ODM-SUPPLY AGREEMENT between Organic Preparations Inc.
+and Agape ATP International Holding Limited, CURO Receivables Finance II, LLC Servicing Agreement",0.0,0.8,0.2,0.0,0.2,0.0,0.0,0.0,0.0,0.0
+20,"As a manufacturer using Butyl rubber, what should I consider regarding the quality and technical support provided under this contract?","Based on the existing contract, as a manufacturer using Butyl rubber, you should consider the following: 1. Product quality: The contract stipulates that product quality must conform to ExxonMobil's standard sales specifications (section 6, item 3). You should familiarize yourself with these specifications to ensure they meet your manufacturing requirements. 2. Technical support: The seller (ExxonMobil) agrees to provide technical support and expertise in product use (section 6, item 4). You should take advantage of this provision to optimize your manufacturing processes and address any technical challenges. 3. Quality Assurance: The contract allows for the creation of an extended Quality Assurance Agreement (section 8). You should consider participating in the development of this agreement to ensure it addresses your specific quality concerns. 4. Process changes: The seller commits to notifying the buyer of significant manufacturing process changes 6 months in advance (section 6, item 7). You should establish a system to monitor and assess these notifications to prepare for any potential impacts on your manufacturing processes.","As a manufacturer using Butyl rubber, you should consider the following regarding the quality and
+technical support provided under this contract:  1. Compliance with Local Laws and Regulations: The
+Manufacturer is required to comply with all local laws and regulations, including those related to
+business practice, workplace relations, safety, and taxation (Document 5, Section 3.1).  2.
+Manufacturing Standards: The Manufacturer is required to comply with all international standards in
+production and manufacturing (Document 5, Section 3.2).  3. Packaging Regulations: The Manufacturer
+is required to comply with any and all packaging laws and regulations in all of the Territories
+(Document 5, Section 3.3).  4. Ability to Perform: The Manufacturer is required to covenant that it
+is willing and able to perform any and all of its obligations under this agreement (Document 5,
+Section 3.4).  5. Intellectual Property: The Manufacturer is required to covenant that the Products
+are clear of any Intellectual Property claims by third parties and that the Customer has full rights
+to sell and market the Products worldwide. The Manufacturer indemnifies the Customer for the same
+(Document 5, Section 3.5(a)).  6. Sale of Product: The Manufacturer is required to covenant not to
+sell any product listed in this agreement or product name to any other party without prior written
+consent of the Customer (Document 3, Section 3.6).  7. Documentation and Information: The
+Manufacturer is required to supply to the Customer all documentation and information relating to the
+Products and their manufacture as is required for the registration of the Products in the
+Territories (Document 2, Section 2.2).  8. Compliance with Local Laws and Regulations: The
+Manufacturer is required to comply with any and all local laws and regulations (Document 2, Section
+3.1).  9. New Products: The Manufacturer agrees to maintain its focus on the design and formulation
+of new products and agrees to provide the Customer with one new product each quarter for a minimum
+of four (4) new products per year (Document 3, Section 14.8).  10. Assignment: The Manufacturer may
+not transfer or assign any of its rights or obligations under this agreement without the prior
+written consent of the Customer (Document 4, Section 14.6).  11. Force Majeure: The contract
+provides for Force Majeure events that may affect performance under the agreement (Document 4,
+Section 14.7).  12. Product Liability Insurance: The Manufacturing Companies utilised by the Agent
+to manufacture the products listed in Schedule A of this agreement shall maintain product liability
+insurance issued by a reputable insurance company under standard terms and conditions in the
+industry to cover the liability of the Customer and to indemnity the Customer from any costs,
+expenses, loss or damages resulting from any act, neglect or default of the company (Document 10,
+Section 6.1).  13. Rectification of Breach: Each party has an obligation to notify immediately the
+other party of any breach of this agreement, and there is a provision for rectification of breach
+(Document 10, Section 7.2).","ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited",1.0,0.6571428571428571,0.02857142857142857,0.0,0.02857142857142857,0.11764705882352941,0.045977011494252866,0.3142857142857143,0.0,0.3142857142857143
+21,"As a distributor, what should I consider regarding product ordering and delivery under this supply agreement?","Based on the existing contracts, as a distributor, you should consider the following regarding product ordering and delivery: 1. Focus on the Purchase Schedules: According to page 2, Section 2, specific product types, quantities, prices, and delivery terms are determined in separate Purchase Schedules. You should carefully review these for each product you intend to distribute. 2. Adhere to Standard Operating Procedures (SOPs): As mentioned on page 4, Section 3, there are established SOPs for forecasting, production planning, ordering, and delivering. Familiarize yourself with these procedures to ensure smooth operations. 3. Be aware of warranty conditions: Page 5, Section 6 outlines specific product warranties. Understand these to manage customer expectations and handle potential issues. 4. Consider inventory management: The contract doesn't obligate either party to sell or purchase any minimum quantity except as specified in Purchase Schedules (page 2, Section 2). Plan your inventory accordingly. 5. Stay informed about any SOP updates: The contract mentions that SOPs will be updated within six months of the Effective Date (page 4, Section 3). Keep track of these updates as they may affect your ordering and delivery processes.","As a distributor, you should consider the following regarding product ordering and delivery under
+this supply agreement:1. Products shall be suitably packed for shipment in the Manufacturer's
+standard shipping cartons, marked for shipment to the destination specified in the Customer's
+Purchase Order, and delivered to the destination Ex Works. (Document 1, Page 4)2. The Customer
+agrees to pay freight, insurance, and any associated expenses. The Customer also agrees to help the
+Manufacturer select the most appropriate carrier for each of the Territories. All freight,
+insurance, and other shipping expenses shall be paid by the Customer. (Document 1, Page 4)3. The
+Manufacturer guarantees that the Products, when shipped, are packaged in such a way as to be
+protected from any foreseeable damage during shipment. (Document 1, Page 4)4. The Customer covenants
+to give its best endeavors to establish and develop a market for the Products in the Territories
+with maximum market penetration. (Document 3, Page 3)5. The Manufacturer covenants that it is and
+will remain for the term of this agreement in compliance with any and all Local Laws and
+Regulations, including laws relating to business practice, workplace relations, safety, and
+taxation. (Document 6, Page 2)6. The Manufacturer further guarantees that the Products, when
+shipped, are packaged in such a way as to be protected from any foreseeable damage during shipment.
+(Document 1, Page 4)7. The Customer shall bear its own legal costs and expenses incurred by it in
+connection with this agreement. (Document 10, Page 6)Please note that these points are based on the
+provided search results and may not cover all aspects of product ordering and delivery under this
+supply agreement.","ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited",1.0,0.2,0.0,0.18181818181818182,0.0,0.1,0.0,0.8,0.0,0.8
+22,"As a manufacturer working under this contract, what should I consider regarding the packaging and marking of goods?","Based on the existing contracts, as a manufacturer, you should carefully consider the packaging and marking requirements outlined in the Loha Supply Chain Management Framework Agreement. According to page 2, sections 5 and 6, you should: 1. Use new, strong wooden cases or cartons suitable for long-distance transportation and climate changes. 2. Ensure packaging protects against rough handling, moisture, rain, corrosion, shocks, rust, and freezing. 3. Treat all wooden materials as per the Entry-Exit Inspection and Quarantine Bureau of China requirements. 4. Mark packages with IPPC stamps certified by the government agent of Botanical-Inspection and Quarantine Bureau. 5. Mark each package with fadeless paint, including package number, gross weight, net weight, and measurements. 6. Include specific wordings like ""KEEP AWAY FROM MOISTURE"", ""HANDLE WITH CARE"", and ""THIS SIDE UP"". Adhering to these requirements will help ensure compliance with the contract and smooth customs processes.","As a manufacturer working under this contract, you should consider the following regarding the
+packaging and marking of goods:   1. Products should be suitably packed for shipment in the
+Manufacturer's standard shipping cartons (Document 1, Page 4). 2. The packaging should be marked for
+shipment to the destination specified in the Customer's Purchase Order (Document 1, Page 4). 3. The
+Manufacturer guarantees that the Products are packaged in such a way as to be protected from any
+foreseeable damage during shipment (Document 1, Page 4). 4. The Manufacturer is responsible for
+ensuring compliance with any and all packaging laws and regulations in all of the Territories
+(Document 2, Page 2). 5. The Customer agrees to pay freight, insurance, and any associated expenses
+for the shipment of the Products (Document 1, Page 4). 6. The Customer agrees to help the
+Manufacturer select the most appropriate carrier for each of the Territories (Document 1, Page 4).","ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,
+ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited",1.0,0.42857142857142855,0.14285714285714285,0.25,0.2857142857142857,0.14285714285714285,0.19047619047619047,0.2857142857142857,0.0,0.42857142857142855
+23,What are the renewal terms in the ODM Supply Agreement between Organic Preparations and Agape ATP?,"According to the Exclusive ODM Supply Agreement between Organic Preparations Inc. and Agape ATP International Holding Limited, as stated on page 2, section 1.3, this agreement will be automatically renewed every 10 years, with each renewal term also being 10 years. However, if either party wishes to terminate the relationship for any reason other than breach of contract, they must provide 6 months' notice to the other party. Additionally, on page 9, section 13.2, it states that the Customer (Agape ATP) will be granted exclusive rights for an indefinite period if they fulfill the minimum annual purchase requirements as listed in Schedule B of the agreement.","According to the provided search results, the renewal terms in the ODM Supply Agreement between
+Organic Preparations and Agape ATP are as follows: the agreement will be automatically renewed at
+the end of every ten (10) year term, with each subsequent term of renewal being for a ten (10) year
+term. A six (6) months notice must be given by either party of their intention to terminate
+relations due to any reason other than breach of this agreement. This information can be found in
+Document 1 on page 1, in the contract named 'ODM-SUPPLY AGREEMENT between Organic Preparations Inc.
+and Agape ATP International Holding Limited'.",ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,1.0,0.125,0.25,0.0,0.875,0.5454545454545454,0.6719999999999999,0.0,0.0,0.625
+24,What are the conditions under which the CURO Receivables Finance II Servicing Agreement can be terminated?,"The CURO Receivables Finance II Servicing Agreement can be terminated under several conditions, as outlined in Section 7 of the contract. According to this section, the agreement can be terminated: When the Owner no longer owns any Receivables or Participation Interests. Upon written notice of termination by the Owner to the Servicer. If the Servicer resigns by providing at least 60 days' prior written notice. Immediately by the Owner if a Servicer Termination Right occurs, which includes events such as the Servicer defaulting on its duties and not curing within 30 days, filing for bankruptcy, or failing to maintain necessary licenses. By the Agent upon the occurrence and continuance of an Event of Default under the Loan Agreement.","The CURO Receivables Finance II Servicing Agreement can be terminated under the following
+conditions:   1. Owner's Termination Right: The Owner may remove the Servicer immediately upon
+written notice of termination if any of the following events occur:  (i) the Servicer defaults in
+the performance of its duties under the Agreement and fails to cure such default within 30 days;
+(ii) the Servicer files or consents to the filing of any petition for insolvency, bankruptcy,
+liquidation, or reorganization; or  (iii) the Servicer fails to maintain all necessary licenses and
+approvals in each jurisdiction for servicing the Serviced Assets.   2. Servicer's Resignation: The
+Servicer may resign its duties by providing the Owner with at least 60 days' prior written notice.
+3. Agent's Termination Right: The Agent may terminate the Agreement upon the occurrence and
+continuance of an Event of Default under the Loan Agreement by delivering written notice of
+termination to the Owner and Servicer.   4. Termination Process: In case of termination,
+resignation, or removal of the Servicer, the Servicer shall be entitled to payment of fees and
+expenses, deliver all property and documents related to the Serviced Assets, and cooperate with the
+Owner in making an orderly transfer of duties.   Reference(s):  - Document 2: Page 2, Contract Name:
+CURO Receivables Finance II, LLC Servicing Agreement","CURO Receivables Finance II, LLC Servicing Agreement",1.0,0.0,0.16666666666666666,0.875,1.0,0.8888888888888888,0.9411764705882353,0.0,0.0,0.8333333333333334
+25,What are the Servicing Agent's obligations regarding the Anti-Money Laundering Program under the Nationwide Mutual Funds Servicing Agreement?,"According to the Nationwide Mutual Funds Servicing Agreement, the Servicing Agent has significant obligations regarding the Anti-Money Laundering (AML) Program. As stated in Section 16 of the agreement, the Servicing Agent must: Establish a written AML Program that complies with the USA Patriot Act of 2001 and the Bank Secrecy Act of 1970. Implement policies and procedures to verify customer identities, maintain records, and identify potential terrorist activities. Ensure no Prohibited Customers or foreign shell banks maintain investments in any Fund. Comply with Customer Identification Program requirements for accounts opened after October 1, 2003. Be prepared to certify compliance with these requirements upon request from Nationwide.","Based on the provided search results, the Nationwide Mutual Funds Servicing Agreement (Contract
+Name: Nationwide Mutual Funds Servicing Agreement, File Name: Atticus Servicing Agreement Apr
+24.pdf) outlines the Servicing Agent's obligations regarding the Anti-Money Laundering Program. On
+page 4, it is stated that the Servicing Agent represents that it has implemented and maintains a
+comprehensive written information security program that contains appropriate security measures to
+safeguard Customer Information, including protecting such Customer Information against cyber
+attacks. The provisions of this Privacy Program section shall survive the termination of the
+Agreement. Additionally, the Servicing Agent is required to establish a written Anti-Money
+Laundering Program (the ""Program"") to include policies, procedures, and controls that comply with
+the Uniting and Strengthening America by Providing Appropriate Tools Required to Intercept and
+Obstruct Terrorism Act (USA Patriot Act) of 2001, the Bank Secrecy Act of 1970, and all other
+applicable anti-money laundering laws and regulations. The Servicing Agent shall promptly certify to
+having such Program that complies with and continues to comply with all aspects and requirements of
+the USA Patriot Act, the Bank Secrecy Act, and all other applicable federal, state, and local anti-
+money laundering laws and regulations. The provisions of this Anti-Money Laundering section shall
+also survive the termination of the Agreement. The Servicing Agent is further required to comply
+with the currency reporting requirements of the USA Patriot Act and the Bank Secrecy Act, as and if
+applicable, and shall file Suspicious Activity Reports (SARs) in accordance with the Act. The
+Servicing Agent's obligations under the Anti-Money Laundering Program are detailed in sections 16
+and 17 of the agreement. The CURO Receivables Finance II, LLC Servicing Agreement (Contract Name:
+CURO Receivables Finance II, LLC Servicing Agreement, File Name: Curo Group Holdings Corp Servicing
+Agreement.pdf) also mentions the Servicer's compliance with anti-money laundering and counter-
+terrorism financing provisions of the Bank Secrecy Act and all regulations issued pursuant to it.
+However, it does not provide specific details about the Servicer's Anti-Money Laundering Program.","Nationwide Mutual Funds Servicing Agreement, CURO Receivables Finance II, LLC Servicing Agreement",0.5,0.4090909090909091,0.13636363636363635,0.0,0.3181818181818182,0.5,0.3888888888888889,0.2727272727272727,0.0,0.45454545454545453
+26,What is the payment structure for the hemp biomass purchase in the Gridiron-Shi Farms Hemp Biomass Supply Agreement?,"As stated in the Gridiron-Shi Farms Hemp Biomass Supply Agreement, Section 1.B and 1.D on page 1, the payment structure is as follows: 1. The purchase price is $5.00 per pound of hemp biomass. 2. The total cost for 30,000 lbs is $150,000. 3. The buyer (Gridiron) must remit the full payment upon execution of the agreement.","An unexpected error occurred: Solar.increase_n_results() takes 3 positional arguments but 4 were
+given",,,,,,,,,,,
+27,What is the payment term for invoices in the FCC-Flotek Terpene Supply Agreement 2019-2023?,"As stated in the FCC-Flotek Terpene Supply Agreement 2019-2023, Section 6(c) on page 2 specifies that payment of FCC invoices shall be due within sixty (60) days of the respective invoice date.","An unexpected error occurred: Solar.increase_n_results() takes 3 positional arguments but 4 were
+given",,,,,,,,,,,
+28,What are the key provisions regarding confidentiality in the RGHI-RCP Transition Services Agreement?,"The RGHI-RCP Transition Services Agreement includes important confidentiality provisions. As stated in Section 7.4 of the contract, both parties are required to protect the other party's Confidential Information with at least the same degree of care they use to protect their own confidential information, but not less than reasonable care. The agreement specifies that neither party shall use the other party's Confidential Information other than to perform Services pursuant to this Agreement. Additionally, the contract outlines exceptions to confidentiality obligations, such as information that becomes publicly available through no fault of the receiving party or information independently developed by the receiving party.","The key provisions regarding confidentiality in the RGHI-RCP Transition Services Agreement can be
+found in Section 11. According to this section, both parties acknowledge that they may obtain
+Confidential Information from each other in the course of performing duties under the Agreement.
+Confidential Information is defined as information that is disclosed to one party by the other
+except as expressly permitted in the Agreement. Each party agrees to use the Confidential
+Information of the other party solely to the extent necessary to fulfill its obligations or exercise
+its rights under the Agreement and not for any other purpose. Each party also agrees to disclose
+such Confidential Information only to its employees, agents, and contractors with a need to know
+such Confidential Information and who have obligations of confidentiality not to use such
+Confidential Information for any purpose except as expressly permitted hereunder. Furthermore, each
+party agrees not to disclose to any third party or use any Confidential Information for any purpose
+except as expressly permitted in the Agreement. The parties also acknowledge that unauthorized
+disclosure or use of the Confidential Information may cause irreparable harm to the other party for
+which recovery of money damages would be inadequate, and the other party shall therefore be entitled
+to seek timely injunctive relief to protect its rights under this Section 11, in addition to any and
+all other remedies available at law or in equity. The terms and conditions of the Agreement will be
+deemed to be the Confidential Information of each party and will not be disclosed without the
+written consent of the other party.","Women.com Networks, Inc. and eDiets.com, Inc. Co-Branding Agreement",0.0,0.7272727272727273,0.2727272727272727,0.0,0.2727272727272727,0.3333333333333333,0.3,0.0,0.0,0.0
+29,What are the termination conditions for the Integrity Short Term Government Fund Distribution Agreement?,"The Integrity Short Term Government Fund Distribution Agreement specifies the following termination conditions in Section 7.1 on page 7: 1. The Fund can terminate the agreement with 60 days' written notice, by a vote of a majority of the Qualified Trustees or by a vote of a majority of the outstanding voting securities of the Fund. 2. Integrity can terminate the agreement with 90 days' written notice. 3. The agreement will automatically terminate in the event of its assignment, as defined in the Investment Company Act of 1940.","The termination conditions for the Integrity Short Term Government Fund Distribution Agreement are
+as follows:     1. The Agreement may be terminated by the vote of a majority of the members of the
+Board of Trustees and who have no direct or indirect financial interest in the operation of the
+Administrative Services Plan or in any related agreements to the Administrative Services Plan
+(""Disinterested Trustees"") or by a majority of the outstanding voting securities of a Fund, on at
+least sixty (60) days written notice to the parties to this Agreement.  2. Either Nationwide or the
+Distributor may terminate the Agreement upon the material breach of this Agreement by the other or
+for any reason on at least ninety (90) days written notice to the other party.  3. The Agreement may
+be terminated if either party commits a material breach of the agreement, which is capable of
+rectification, and the breaching party has not rectified it within twenty-one (21) days of receipt
+of written notice.  4. The Agreement may be terminated upon the commencement of the winding up or
+bankruptcy of either party or on the appointment of a receiver of the distributor's assets or on
+either party ceasing to do business at any time for thirty consecutive days (other than for annual
+holidays).  5. The Agreement may be terminated if either party is substantially prevented from
+performing or becomes unable to perform its obligations under the agreement for any reason (other
+than a default of the other party).  6. The Servicer may resign its duties hereunder by providing
+the Owner with at least sixty (60) days' prior written notice.  7. The Agreement may be terminated
+if a successor Servicer is appointed by or on behalf of the Owner with the prior written consent of
+the Agent so long as the Loan Agreement remains outstanding, and such successor Servicer agrees in
+writing to be bound by the terms of the Agreement in the same manner as the Servicer is bound
+hereunder.  8. The Agent may terminate the Agreement upon the occurrence and continuance of an Event
+of Default under the Loan Agreement by delivery of written notice of termination from Agent to Owner
+and Servicer.  9. The Agreement may be terminated if a breach is not cured within thirty (30) days
+from receipt of written notice of such breach sent to the address of the breaching party as
+specified herein.","Nationwide Mutual Funds Servicing Agreement, ODM-SUPPLY AGREEMENT between Organic Preparations Inc.
+and Agape ATP International Holding Limited, CURO Receivables Finance II, LLC Servicing Agreement,
+Women.com Networks, Inc. and eDiets.com, Inc. Co-Branding Agreement",0.25,0.9230769230769231,0.07692307692307693,0.0,0.07692307692307693,0.25,0.11764705882352941,0.0,0.0,0.0
+30,What are the conditions under which Constellation can terminate the Constellation Energy Sponsorship and Services Agreement for HOF Village early?,"According to the Constellation Energy Sponsorship and Services Agreement for HOF Village, Constellation can terminate the agreement early under the following conditions: 1. As stated in Section 4.2(c) on page 9, Constellation may terminate the agreement effective December 31, 2023, if: a) They provide written notice to the HOF Entities by December 1, 2022, and b) They have not accrued an amount of New Business equal to or greater than the Sponsorship Fees paid prior to December 1, 2022. 2. As mentioned in Section 4.2(b) on page 8, Constellation may terminate the agreement at any time if they reasonably believe that association with the HOF Entities could materially damage their reputation or image. 3. Additionally, as outlined in Section 4.2(a) on page 8, Constellation can terminate the agreement if there's an Event of Default by the HOF Entities, such as failure to perform material obligations or bankruptcy.","Constellation can terminate the Constellation Energy Sponsorship and Services Agreement for HOF
+Village early under the following conditions:1. Material breach of the Agreement by the other party,
+which is not cured within thirty (30) days from receipt of written notice of such breach sent to the
+address of the breaching party as specified herein.2. Change in effective control of the company or
+its ownership or active management is changed in any other manner.3. If the control of either party
+shall pass from the present shareholders or owners or controllers to other persons whom the other
+party shall in their absolute discretion regard as unsuitable.4. Any other reason with at least
+ninety (90) days written notice to the other party.These conditions are based on the provided search
+results from contracts such as the Nationwide Mutual Funds Servicing Agreement, Women.com Networks,
+Inc. and eDiets.com, Inc. Co-Branding Agreement, CURO Receivables Finance II, LLC Servicing
+Agreement, and ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International
+Holding Limited.","Nationwide Mutual Funds Servicing Agreement, Women.com Networks, Inc. and eDiets.com, Inc. Co-
+Branding Agreement, CURO Receivables Finance II, LLC Servicing Agreement, ODM-SUPPLY AGREEMENT
+between Organic Preparations Inc. and Agape ATP International Holding Limited",0.0,0.75,0.16666666666666666,0.0,0.16666666666666666,0.09090909090909091,0.11764705882352942,0.0,0.08333333333333333,0.08333333333333333
+31,What are the minimum purchase requirements specified in the ExxonMobil-West Pharmaceutical Global Butyl Rubber Supply Agreement 2019-2023?,"The ExxonMobil-West Pharmaceutical Global Butyl Rubber Supply Agreement 2019-2023 does include minimum purchase requirements. As stated in the key conditions (section 6, item 1), the buyer agrees to purchase minimum annual quantities of Butyl rubber products. However, the specific quantities are not provided in the summary. For exact minimum purchase quantities, you would need to refer to the detailed product and quantity section of the original contract document.","The ExxonMobil-West Pharmaceutical Global Butyl Rubber Supply Agreement 2019-2023 does not appear to
+be among the provided search results. Please ensure the correct contract name and date are provided
+for accurate search results.",,,,,,,,,,,
+32,What is the process for resolving disputes under the Reynolds-Pactiv Master Supply Agreement 2019?,"The Reynolds-Pactiv Master Supply Agreement 2019 outlines a specific dispute resolution process in Section 11, found on page 11. According to this section, the process involves three steps: 1. Negotiation: The parties must first attempt to resolve the dispute through good faith negotiation for a period of 30 days after notification of the dispute. 2. Mediation: If negotiation fails, either party may request mediation. This involves selecting a mutually acceptable JAMS mediator within 10 days of the mediation request. The mediation should be held in Lake County or Cook County, Illinois within 30 days of the request. 3. Litigation: If mediation is unsuccessful, a party may file litigation in a U.S. court of competent jurisdiction. The parties consent to the exclusive jurisdiction of U.S. federal and Illinois state courts in Lake County or Cook County, Illinois for resolving disputes. The contract specifies that parties waive the right to a jury trial for any disputes resolved through litigation.","To resolve disputes under the Reynolds-Pactiv Master Supply Agreement 2019, the process involves
+mutual consultation between the parties in good faith as promptly as possible. If an amicable
+settlement is not reached, the disputes shall be decided by Arbitration by the Arbitration Committee
+of the International Chamber of Commerce located in Switzerland. The language to be used in the
+Arbitration proceedings shall be English, and the award/decision of the Arbitration Committee shall
+be final and binding on both parties and enforceable in any jurisdiction. This process is outlined
+in Document 1, page 6, under the contract name 'ODM-SUPPLY AGREEMENT between Organic Preparations
+Inc. and Agape ATP International Holding Limited', in section 8.1.",ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,0.0,0.8,0.1,0.0,0.1,0.16666666666666666,0.125,0.0,0.1,0.1
+33,What are the insurance requirements for the goods in the Loha Supply Chain Management Framework Agreement?,"In the Loha Supply Chain Management Framework Agreement, as stated on page 3, section 10, the insurance requirements specify that the seller must cover 110% of the invoice value against All Risks and War Risk. This comprehensive insurance coverage is the responsibility of the seller and ensures protection for the goods throughout the shipping process.","The insurance requirements for the goods in the Loha Supply Chain Management Framework Agreement can
+be found in the ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International
+Holding Limited. According to the agreement, the Manufacturing Companies utilised by the Agent to
+manufacture the products listed in Schedule A of this agreement shall maintain product liability
+insurance issued by a reputable insurance company under standard terms and conditions in the
+industry to cover the liability of the Customer and to indemnify the Customer from any costs,
+expenses, loss or damages resulting from any act, neglect or default of the company (Section 6.1).
+Additionally, the Customer shall at all times during the term of this agreement maintain product
+liability insurance, covering all products sold by the Manufacturer to the Customer and which policy
+shall name the Manufacturer as Additional Insured (Section 6.2).",ODM-SUPPLY AGREEMENT between Organic Preparations Inc. and Agape ATP International Holding Limited,1.0,0.7,0.0,0.0,0.0,0.125,0.0,0.3,0.0,0.3

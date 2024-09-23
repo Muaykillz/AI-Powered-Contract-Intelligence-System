@@ -6,7 +6,9 @@ import re
 import os
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+#from src.utils.config import load_environment_variables
 
+#load_environment_variables()
 class VectorDB:
     def __init__(self, clear_on_init=False):
         persist_directory = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'data', 'chroma_db')

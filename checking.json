@@ -1,0 +1,235 @@
+{
+    "results": [
+      {
+        "query_id": "1",
+        "query": "What are the provisions regarding new product development in the ODM Supply Agreement between Organic Preparations and Agape ATP?",
+        "gt_answer": "According to the Exclusive ODM Supply Agreement between Organic Preparations Inc. and Agape ATP International Holding Limited, as stated on page 9, section 14.8, the Manufacturer (Organic Preparations Inc.) agrees to develop and offer a minimum of 4 new products per year to the Customer (Agape ATP International Holding Limited). The Customer has the right to consider these new products and would receive exclusive rights for marketing, promotion, and sales of these new products.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "2",
+        "query": "What is the Servicing Fee structure outlined in the CURO Receivables Finance II Servicing Agreement?",
+        "gt_answer": "According to the CURO Receivables Finance II Servicing Agreement, the Servicing Fee is defined in Annex A. As stated in this section, the Servicing Fee for any Servicing Period is calculated as the product of (a) 2.00%, (b) the daily average Receivable Balance of all Receivables serviced under the agreement during the Servicing Period, and (c) a fraction where the numerator is the number of calendar days during the Servicing Period and the denominator is 360.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "3",
+        "query": "What is the process for terminating the Nationwide Mutual Funds Servicing Agreement?",
+        "gt_answer": "According to the Nationwide Mutual Funds Servicing Agreement, termination can occur in two ways. As stated in Section 9 of the agreement, either party can terminate the contract with at least 90 days written notice. Additionally, the agreement can be terminated immediately in the event of a material breach by either party. The Fund also reserves the right to terminate the agreement with 60 days written notice if voted by a majority of the Disinterested Trustees.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "4",
+        "query": "What are the specific CBD and THC content requirements for the hemp biomass in the Gridiron-Shi Farms Hemp Biomass Supply Agreement?",
+        "gt_answer": "According to the Gridiron-Shi Farms Hemp Biomass Supply Agreement, as stated in Section 1.A on page 1, the hemp biomass must contain a minimum of six percent (6%) total Cannabidiol (CBD/and or CBDA) and less than three percent (3%) total THC content.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "5",
+        "query": "What is the minimum d-limonene content required for the Terpene Product in the FCC-Flotek Terpene Supply Agreement 2019-2023?",
+        "gt_answer": "According to the FCC-Flotek Terpene Supply Agreement 2019-2023, as stated in Section 1 on page 1, the Terpene Product must have a minimum d-limonene content of 94%.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "6",
+        "query": "What is the duration of IT services provided under the RGHI-RCP Transition Services Agreement?",
+        "gt_answer": "According to the RGHI-RCP Transition Services Agreement, the IT services are generally provided for 24 months from the Commencement Date. As stated in Exhibit A, Section G1 of the contract, \"All services in group 24 months from the Commencement Date. Termination can only be as per an agreed Migration Plan.\"",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "7",
+        "query": "What is the duration of the Integrity Short Term Government Fund Distribution Agreement, and is there an automatic renewal clause?",
+        "gt_answer": "According to the Integrity Short Term Government Fund Distribution Agreement, as stated in Section 7.1 on page 7, the initial contract period is from January 18, 2020, to January 18, 2022. The agreement includes an automatic renewal clause, which states that it \"shall continue automatically for successive annual periods ending on January 18th of each year,\" subject to annual approval by the Fund's Board of Trustees and Qualified Trustees.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "8",
+        "query": "What are the specific sponsorship rights granted to Constellation in the Constellation Energy Sponsorship and Services Agreement for HOF Village?",
+        "gt_answer": "According to the Constellation Energy Sponsorship and Services Agreement for HOF Village, the specific sponsorship rights granted to Constellation are detailed in Exhibit E of the contract. As stated in Section 3.1 on page 4, these rights include advertising rights and other benefits for the entire Term of the agreement, except as otherwise set forth in Exhibit E. The exact details of these rights are not provided in the main body of the contract, but are referenced to be in the exhibit.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "9",
+        "query": "What is the pricing mechanism for Butyl rubber products in the ExxonMobil-West Pharmaceutical Global Butyl Rubber Supply Agreement 2019-2023?",
+        "gt_answer": "According to the ExxonMobil-West Pharmaceutical Global Butyl Rubber Supply Agreement 2019-2023, the pricing mechanism is subject to adjustment based on Brent crude oil price fluctuations. As stated in the contract overview (section 5), the agreement includes specific pricing mechanisms. Furthermore, the key conditions (section 6, item 2) explicitly mention that pricing is subject to adjustment based on Brent crude oil price fluctuations.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "10",
+        "query": "What are the specific warranty conditions for products sold under the Reynolds-Pactiv Master Supply Agreement 2019?",
+        "gt_answer": "According to the Reynolds-Pactiv Master Supply Agreement 2019, as stated in page 5, Section 6 \"Specific Product Warranties,\" the seller warrants that each product at the time of delivery will be in new, undamaged condition, free of defects, manufactured and stored at approved facilities, compliant with applicable laws including FDA regulations, conform to specifications, be fit for purpose, have good title, and not infringe on any third-party intellectual property rights. The contract specifies that these warranties are the sole remedies for breach of warranty.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "11",
+        "query": "What is the penalty for late delivery according to the Loha Supply Chain Management Framework Agreement?",
+        "gt_answer": "According to the Loha Supply Chain Management Framework Agreement, as stated in page 5, section 18, the penalty for late delivery is charged at 0.5% for every seven days, with odd days less than seven counted as seven days. The total penalty cannot exceed 5% of the value of the goods involved in the late delivery. If the delivery is more than ten weeks late, the buyer has the right to cancel the contract, and the seller must pay a penalty of 30% of the total goods price.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "12",
+        "query": "As a distributor, I plan to launch new products in foreign markets. What factors should be considered based on existing contracts?",
+        "gt_answer": "Based on the existing contracts, if a distributor plans to launch new products in foreign markets, the following factors should be considered: Product Registration: According to the Exclusive ODM Supply Agreement between Organic Preparations Inc. and Agape ATP International Holding Limited, page 3, section 2.1, the Customer (in this case, the distributor) is responsible for registering the products in the territories where they will be marketed. Compliance with Local Laws: As per the agreement on page 3, sections 3.1 and 3.3, the Manufacturer must comply with local laws and regulations, including packaging laws in all territories. The distributor should ensure that new products meet these requirements. Product Liability Insurance: According to the agreement on page 6, section 6.2, the distributor must maintain product liability insurance for all products sold. Minimum Purchase Quantities: As specified in Schedule B of the agreement, there are minimum annual purchase requirements for each product. The distributor should consider whether they can meet these sales targets for new products. Market Penetration: The agreement stipulates on page 4, section 4.3, that the Customer must endeavor to achieve maximum market penetration. This should be considered when launching new products.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "13",
+        "query": "As the Servicer, what key responsibilities should I be aware of in managing the Serviced Assets under this agreement?",
+        "gt_answer": "Based on the existing contract, as the Servicer, you should consider the following key responsibilities: Adhere to the Servicing Standard, which requires reasonable care and compliance with Applicable Law. This is outlined in Section 1(b) of the agreement. Collect and process all collections on Serviced Assets according to the Loan Agreement, as mentioned in Section 1(d). Prepare and deliver required reports, including Monthly Servicing Reports, as per Section 3(a). Maintain appropriate books and records that are accessible for inspection, as stated in Section 2(f). Comply with all applicable laws, including anti-money laundering and sanctions regulations, as detailed in Sections 11(h) and 11(i). You should also be aware that you may appoint Sub-Servicers, but you remain liable for their performance, as outlined in Section 10(a).",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "14",
+        "query": "As a Servicing Agent, what should I consider regarding the protection of customer information under this agreement?",
+        "gt_answer": "Based on the existing contracts, as a Servicing Agent, you should consider implementing robust data protection measures. The Nationwide Mutual Funds Servicing Agreement emphasizes the importance of customer information protection in Section 15. You should: Establish and maintain safeguards against unauthorized access, destruction, loss, or alteration of Customer Information. Implement a comprehensive written information security program to safeguard Customer Information. Ensure compliance with Privacy Laws, including the Gramm-Leach-Bliley Act and Regulation S-P. Be prepared to promptly notify Nationwide in the event of any improper disclosure of Customer Information. Remember, the contract defines Customer Information broadly, including personal and financial data of Fund customers.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "15",
+        "query": "As a processor working with Gridiron BioNutrients, what should I consider regarding the delivery of the hemp biomass?",
+        "gt_answer": "Based on the existing contracts, as a processor working with Gridiron BioNutrients, you should consider the following: 1. Gridiron will determine which processing facility will receive the hemp biomass. 2. According to Section 1.F of the Gridiron-Shi Farms Hemp Biomass Supply Agreement (page 1), Shi Farms is responsible for delivering the biomass to the processor determined by Gridiron. 3. You should ensure that you have the capacity to receive and process 30,000 lbs of hemp biomass. 4. Be prepared to potentially conduct a third-party analysis of the biomass if Gridiron requests it, as mentioned in Section 1.F. 5. Verify that the received biomass meets the quality standards specified in the contract, including CBD/CBDA content, THC content, and absence of contaminants.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "16",
+        "query": "As a manufacturer, what should I consider regarding production capacity to fulfill this contract?",
+        "gt_answer": "Based on the existing contract, as a manufacturer, you should consider maintaining adequate manufacturing capacity at your facility to meet the supply requirements. According to Section 9 on page 3 of the FCC-Flotek Terpene Supply Agreement 2019-2023, FCC is required to maintain sufficient manufacturing capacity and staffing throughout the Term to manufacture the Terpene Product at the Winter Haven, Florida facility. You should also be prepared to handle orders up to the Maximum Quantity of [redacted] pounds per Year, as specified in Section 1 on page 1.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "17",
+        "query": "As the new CFO of RCP, what should I be aware of regarding financial reporting and compliance during the transition period?",
+        "gt_answer": "Based on the existing contracts, as the new CFO of RCP, you should consider the following: 1. RGHI will provide support for SEC reporting and compliance for 24 months from the Commencement Date, as stated in Exhibit A, Section G8.4 of the RGHI-RCP Transition Services Agreement. 2. You should work on establishing RCP's own financial reporting systems and processes during this period. 3. Pay attention to the SOX compliance support provided by RGHI, as mentioned in Section G3.8 of Exhibit A, which lasts for 24 months. 4. Be aware of the various financial services handover processes, including treasury, tax, and audit support, detailed in Sections G3 and G4 of Exhibit A. 5. Ensure that RCP is prepared to take over all financial responsibilities by the end of the transition period.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "18",
+        "query": "As the distributor (Integrity), what are my main responsibilities under this contract?",
+        "gt_answer": "Based on the existing contract, as the distributor (Integrity), you should consider the following key responsibilities: Act as the principal underwriter for the distribution of the Fund's shares, as outlined in Section 1.1 on page 1. Use your best efforts to solicit orders for the sale of shares at the public offering price, as stated in Section 1.2 on page 1. Comply with all applicable laws, rules, and regulations, including those made by the SEC, as mentioned in Section 1.3 on page 1. Provide customer service by responding to telephone questions about the Fund during normal business hours, as per Section 1.4 on page 1. Bear all expenses related to distribution activities, as detailed in Section 1.8 on pages 2-3. Prepare and deliver regular reports on distribution expenses to the Fund's Treasurer and Investment Adviser, as specified in Section 1.9 on page 3. It's crucial to familiarize yourself with these responsibilities and ensure compliance throughout the contract period.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "19",
+        "query": "As the energy manager for HOF Village, how should I approach energy procurement under this contract?",
+        "gt_answer": "Based on the existing contract, as the energy manager for HOF Village, you should consider the following: 1. Exclusively purchase commodity electricity and gas from Constellation, as stipulated in Section 2.2 on page 3. However, be aware of exceptions, particularly pre-existing agreements with Johnson Controls, Inc. 2. Work closely with Constellation to develop a comprehensive energy strategy, as mentioned in Section 1.1(a) on page 1. This should include sustainable product solutions, competitive market pricing, and periodic reporting and analytics. 3. Utilize the Supplier Component Questionnaire (Exhibit B) when determining pricing for energy products and services. 4. Be prepared to provide credit approval or a surety bond if purchasing through an affiliate, as outlined in Section 1.1(b) on page 2. 5. Keep in mind the commitment to contract for a minimum of [REDACTED] in EME financing, with specific amounts required in [REDACTED] and [REDACTED], as stated in Section 2.4 on page 4.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "20",
+        "query": "As a manufacturer using Butyl rubber, what should I consider regarding the quality and technical support provided under this contract?",
+        "gt_answer": "Based on the existing contract, as a manufacturer using Butyl rubber, you should consider the following: 1. Product quality: The contract stipulates that product quality must conform to ExxonMobil's standard sales specifications (section 6, item 3). You should familiarize yourself with these specifications to ensure they meet your manufacturing requirements. 2. Technical support: The seller (ExxonMobil) agrees to provide technical support and expertise in product use (section 6, item 4). You should take advantage of this provision to optimize your manufacturing processes and address any technical challenges. 3. Quality Assurance: The contract allows for the creation of an extended Quality Assurance Agreement (section 8). You should consider participating in the development of this agreement to ensure it addresses your specific quality concerns. 4. Process changes: The seller commits to notifying the buyer of significant manufacturing process changes 6 months in advance (section 6, item 7). You should establish a system to monitor and assess these notifications to prepare for any potential impacts on your manufacturing processes.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "21",
+        "query": "As a distributor, what should I consider regarding product ordering and delivery under this supply agreement?",
+        "gt_answer": "Based on the existing contracts, as a distributor, you should consider the following regarding product ordering and delivery: 1. Focus on the Purchase Schedules: According to page 2, Section 2, specific product types, quantities, prices, and delivery terms are determined in separate Purchase Schedules. You should carefully review these for each product you intend to distribute. 2. Adhere to Standard Operating Procedures (SOPs): As mentioned on page 4, Section 3, there are established SOPs for forecasting, production planning, ordering, and delivering. Familiarize yourself with these procedures to ensure smooth operations. 3. Be aware of warranty conditions: Page 5, Section 6 outlines specific product warranties. Understand these to manage customer expectations and handle potential issues. 4. Consider inventory management: The contract doesn't obligate either party to sell or purchase any minimum quantity except as specified in Purchase Schedules (page 2, Section 2). Plan your inventory accordingly. 5. Stay informed about any SOP updates: The contract mentions that SOPs will be updated within six months of the Effective Date (page 4, Section 3). Keep track of these updates as they may affect your ordering and delivery processes.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "22",
+        "query": "As a manufacturer working under this contract, what should I consider regarding the packaging and marking of goods?",
+        "gt_answer": "Based on the existing contracts, as a manufacturer, you should carefully consider the packaging and marking requirements outlined in the Loha Supply Chain Management Framework Agreement. According to page 2, sections 5 and 6, you should: 1. Use new, strong wooden cases or cartons suitable for long-distance transportation and climate changes. 2. Ensure packaging protects against rough handling, moisture, rain, corrosion, shocks, rust, and freezing. 3. Treat all wooden materials as per the Entry-Exit Inspection and Quarantine Bureau of China requirements. 4. Mark packages with IPPC stamps certified by the government agent of Botanical-Inspection and Quarantine Bureau. 5. Mark each package with fadeless paint, including package number, gross weight, net weight, and measurements. 6. Include specific wordings like \"KEEP AWAY FROM MOISTURE\", \"HANDLE WITH CARE\", and \"THIS SIDE UP\". Adhering to these requirements will help ensure compliance with the contract and smooth customs processes.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "23",
+        "query": "What are the renewal terms in the ODM Supply Agreement between Organic Preparations and Agape ATP?",
+        "gt_answer": "According to the Exclusive ODM Supply Agreement between Organic Preparations Inc. and Agape ATP International Holding Limited, as stated on page 2, section 1.3, this agreement will be automatically renewed every 10 years, with each renewal term also being 10 years. However, if either party wishes to terminate the relationship for any reason other than breach of contract, they must provide 6 months' notice to the other party. Additionally, on page 9, section 13.2, it states that the Customer (Agape ATP) will be granted exclusive rights for an indefinite period if they fulfill the minimum annual purchase requirements as listed in Schedule B of the agreement.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "24",
+        "query": "What are the conditions under which the CURO Receivables Finance II Servicing Agreement can be terminated?",
+        "gt_answer": "The CURO Receivables Finance II Servicing Agreement can be terminated under several conditions, as outlined in Section 7 of the contract. According to this section, the agreement can be terminated: When the Owner no longer owns any Receivables or Participation Interests. Upon written notice of termination by the Owner to the Servicer. If the Servicer resigns by providing at least 60 days' prior written notice. Immediately by the Owner if a Servicer Termination Right occurs, which includes events such as the Servicer defaulting on its duties and not curing within 30 days, filing for bankruptcy, or failing to maintain necessary licenses. By the Agent upon the occurrence and continuance of an Event of Default under the Loan Agreement.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "25",
+        "query": "What are the Servicing Agent's obligations regarding the Anti-Money Laundering Program under the Nationwide Mutual Funds Servicing Agreement?",
+        "gt_answer": "According to the Nationwide Mutual Funds Servicing Agreement, the Servicing Agent has significant obligations regarding the Anti-Money Laundering (AML) Program. As stated in Section 16 of the agreement, the Servicing Agent must: Establish a written AML Program that complies with the USA Patriot Act of 2001 and the Bank Secrecy Act of 1970. Implement policies and procedures to verify customer identities, maintain records, and identify potential terrorist activities. Ensure no Prohibited Customers or foreign shell banks maintain investments in any Fund. Comply with Customer Identification Program requirements for accounts opened after October 1, 2003. Be prepared to certify compliance with these requirements upon request from Nationwide.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "26",
+        "query": "What is the payment structure for the hemp biomass purchase in the Gridiron-Shi Farms Hemp Biomass Supply Agreement?",
+        "gt_answer": "As stated in the Gridiron-Shi Farms Hemp Biomass Supply Agreement, Section 1.B and 1.D on page 1, the payment structure is as follows: 1. The purchase price is $5.00 per pound of hemp biomass. 2. The total cost for 30,000 lbs is $150,000. 3. The buyer (Gridiron) must remit the full payment upon execution of the agreement.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "27",
+        "query": "What is the payment term for invoices in the FCC-Flotek Terpene Supply Agreement 2019-2023?",
+        "gt_answer": "As stated in the FCC-Flotek Terpene Supply Agreement 2019-2023, Section 6(c) on page 2 specifies that payment of FCC invoices shall be due within sixty (60) days of the respective invoice date.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "28",
+        "query": "What are the key provisions regarding confidentiality in the RGHI-RCP Transition Services Agreement?",
+        "gt_answer": "The RGHI-RCP Transition Services Agreement includes important confidentiality provisions. As stated in Section 7.4 of the contract, both parties are required to protect the other party's Confidential Information with at least the same degree of care they use to protect their own confidential information, but not less than reasonable care. The agreement specifies that neither party shall use the other party's Confidential Information other than to perform Services pursuant to this Agreement. Additionally, the contract outlines exceptions to confidentiality obligations, such as information that becomes publicly available through no fault of the receiving party or information independently developed by the receiving party.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "29",
+        "query": "What are the termination conditions for the Integrity Short Term Government Fund Distribution Agreement?",
+        "gt_answer": "The Integrity Short Term Government Fund Distribution Agreement specifies the following termination conditions in Section 7.1 on page 7: 1. The Fund can terminate the agreement with 60 days' written notice, by a vote of a majority of the Qualified Trustees or by a vote of a majority of the outstanding voting securities of the Fund. 2. Integrity can terminate the agreement with 90 days' written notice. 3. The agreement will automatically terminate in the event of its assignment, as defined in the Investment Company Act of 1940.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "30",
+        "query": "What are the conditions under which Constellation can terminate the Constellation Energy Sponsorship and Services Agreement for HOF Village early?",
+        "gt_answer": "According to the Constellation Energy Sponsorship and Services Agreement for HOF Village, Constellation can terminate the agreement early under the following conditions: 1. As stated in Section 4.2(c) on page 9, Constellation may terminate the agreement effective December 31, 2023, if: a) They provide written notice to the HOF Entities by December 1, 2022, and b) They have not accrued an amount of New Business equal to or greater than the Sponsorship Fees paid prior to December 1, 2022. 2. As mentioned in Section 4.2(b) on page 8, Constellation may terminate the agreement at any time if they reasonably believe that association with the HOF Entities could materially damage their reputation or image. 3. Additionally, as outlined in Section 4.2(a) on page 8, Constellation can terminate the agreement if there's an Event of Default by the HOF Entities, such as failure to perform material obligations or bankruptcy.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "31",
+        "query": "What are the minimum purchase requirements specified in the ExxonMobil-West Pharmaceutical Global Butyl Rubber Supply Agreement 2019-2023?",
+        "gt_answer": "The ExxonMobil-West Pharmaceutical Global Butyl Rubber Supply Agreement 2019-2023 does include minimum purchase requirements. As stated in the key conditions (section 6, item 1), the buyer agrees to purchase minimum annual quantities of Butyl rubber products. However, the specific quantities are not provided in the summary. For exact minimum purchase quantities, you would need to refer to the detailed product and quantity section of the original contract document.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "32",
+        "query": "What is the process for resolving disputes under the Reynolds-Pactiv Master Supply Agreement 2019?",
+        "gt_answer": "The Reynolds-Pactiv Master Supply Agreement 2019 outlines a specific dispute resolution process in Section 11, found on page 11. According to this section, the process involves three steps: 1. Negotiation: The parties must first attempt to resolve the dispute through good faith negotiation for a period of 30 days after notification of the dispute. 2. Mediation: If negotiation fails, either party may request mediation. This involves selecting a mutually acceptable JAMS mediator within 10 days of the mediation request. The mediation should be held in Lake County or Cook County, Illinois within 30 days of the request. 3. Litigation: If mediation is unsuccessful, a party may file litigation in a U.S. court of competent jurisdiction. The parties consent to the exclusive jurisdiction of U.S. federal and Illinois state courts in Lake County or Cook County, Illinois for resolving disputes. The contract specifies that parties waive the right to a jury trial for any disputes resolved through litigation.",
+        "response": "",
+        "retrieved_context": []
+      },
+      {
+        "query_id": "33",
+        "query": "What are the insurance requirements for the goods in the Loha Supply Chain Management Framework Agreement?",
+        "gt_answer": "In the Loha Supply Chain Management Framework Agreement, as stated on page 3, section 10, the insurance requirements specify that the seller must cover 110% of the invoice value against All Risks and War Risk. This comprehensive insurance coverage is the responsibility of the seller and ensures protection for the goods throughout the shipping process.",
+        "response": "",
+        "retrieved_context": []
+      }
+    ]
+  }

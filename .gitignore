@@ -1,4 +1,4 @@
-venv
+.venv
 
 # Ignore .env file to prevent sensitive information from being committed
 .env
@@ -19,3 +19,9 @@ venv
 
 # Ignore service account key
 service_account.json
+evaluation_results.json
+evaluation_results_final_1.json
+evaluation_results_2.json
+
+.csv
+.ipynb

@@ -73,6 +73,7 @@ orjson==3.10.7
 overrides==7.7.0
 packaging==24.1
 pandas==2.2.2
+pdf_processor==0.2
 pillow==10.4.0
 posthog==3.5.0
 proto-plus==1.24.0
@@ -91,6 +92,8 @@ python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pytz==2024.1
 PyYAML==6.0.2
+ragchecker==0.1.8
+refchecker==0.2.12
 referencing==0.35.1
 requests==2.32.3
 requests-oauthlib==2.0.0

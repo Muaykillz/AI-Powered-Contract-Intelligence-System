@@ -33,13 +33,16 @@ from .file_batches import (
     AsyncFileBatchesWithStreamingResponse,
 )
 from ....pagination import SyncCursorPage, AsyncCursorPage
-from ....types.beta import vector_store_list_params, vector_store_create_params, vector_store_update_params
-from ...._base_client import (
-    AsyncPaginator,
-    make_request_options,
+from ....types.beta import (
+    FileChunkingStrategyParam,
+    vector_store_list_params,
+    vector_store_create_params,
+    vector_store_update_params,
 )
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.beta.vector_store import VectorStore
 from ....types.beta.vector_store_deleted import VectorStoreDeleted
+from ....types.beta.file_chunking_strategy_param import FileChunkingStrategyParam
 
 __all__ = ["VectorStores", "AsyncVectorStores"]
 
@@ -55,16 +58,27 @@ class VectorStores(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> VectorStoresWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/openai/openai-python#accessing-raw-response-data-eg-headers
+        """
         return VectorStoresWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> VectorStoresWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/openai/openai-python#with_streaming_response
+        """
         return VectorStoresWithStreamingResponse(self)
 
     def create(
         self,
         *,
-        chunking_strategy: vector_store_create_params.ChunkingStrategy | NotGiven = NOT_GIVEN,
+        chunking_strategy: FileChunkingStrategyParam | NotGiven = NOT_GIVEN,
         expires_after: vector_store_create_params.ExpiresAfter | NotGiven = NOT_GIVEN,
         file_ids: List[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[object] | NotGiven = NOT_GIVEN,
@@ -322,16 +336,27 @@ class AsyncVectorStores(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncVectorStoresWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/openai/openai-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncVectorStoresWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncVectorStoresWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/openai/openai-python#with_streaming_response
+        """
         return AsyncVectorStoresWithStreamingResponse(self)
 
     async def create(
         self,
         *,
-        chunking_strategy: vector_store_create_params.ChunkingStrategy | NotGiven = NOT_GIVEN,
+        chunking_strategy: FileChunkingStrategyParam | NotGiven = NOT_GIVEN,
         expires_after: vector_store_create_params.ExpiresAfter | NotGiven = NOT_GIVEN,
         file_ids: List[str] | NotGiven = NOT_GIVEN,
         metadata: Optional[object] | NotGiven = NOT_GIVEN,

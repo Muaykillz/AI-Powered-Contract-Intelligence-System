@@ -8,7 +8,9 @@ from langgraph.graph import Graph, END
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+#from src.utils.config import load_environment_variables
 
+#load_environment_variables()
 class Solar:
     def __init__(self):
         self.api_key = os.getenv("UPSTAGE_API_KEY")
@@ -56,7 +58,10 @@ class Solar:
         messages = [
             {"role": "system", "content": "You are an AI assistant specialized in analyzing user queries about procurement contracts."},
             {"role": "user", "content": 
-             f"""Analyze the following user query:
+             f"""Analyze the following user query and provide:
+                1. At least 3 key points to search for in contracts
+                2. Possible related contract types
+                3. At least 5 keywords for searching
 
                 User query: {query}
 
@@ -112,36 +117,44 @@ class Solar:
             "summary": "You are an intelligent AI assistant specialized in summarizing procurement contract terms and conditions.",
             "detailed": "You are an intelligent AI assistant specialized in providing detailed, specific answers and information"
         }.get(query_type, "You are an intelligent AI assistant and legal expert specialized in answering questions about procurement contracts.")
+        context = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
+        #print('context', context)
+        # processed_results = []
+        # for idx, result in enumerate(search_results):
+        #     processed_result = {
+        #         "document": result.get('document', 'Unknown Document'),
+        #         "metadata": {
+        #             "file_name": result.get('metadata', {}).get('file_name', 'Unknown File'),
+        #             "page_number": result.get('metadata', {}).get('page_number', 'Unknown Page'),
+        #             "contract_name": result.get('metadata', {}).get('contract_name', 'Unknown Contract'),
+        #             "section": result.get('metadata', {}).get('section', 'Unknown Section'),
+        #             "clause": result.get('metadata', {}).get('clause', 'Unknown Clause'),
+        #         },
+        #         "score": result.get('score', 0.0)
+        #     }
+        #     processed_results.append(processed_result)
 
-        processed_results = []
-        for idx, result in enumerate(search_results):
-            processed_result = {
-                "document": result.get('document', 'Unknown Document'),
-                "metadata": {
-                    "file_name": result.get('metadata', {}).get('file_name', 'Unknown File'),
-                    "page_number": result.get('metadata', {}).get('page_number', 'Unknown Page'),
-                    "contract_name": result.get('metadata', {}).get('contract_name', 'Unknown Contract'),
-                    "section": result.get('metadata', {}).get('section', 'Unknown Section'),
-                    "clause": result.get('metadata', {}).get('clause', 'Unknown Clause'),
-                },
-                "score": result.get('score', 0.0)
-            }
-            processed_results.append(processed_result)
+        # if not processed_results:
+        #     return {
+        #         "answer": "I don't have enough information to answer this question. No relevant search results were found.",
+        #         "references": [],
+        #         "confidence": 0.0
+        #     }
 
         messages = [
             {"role": "system", "content": system_message},
             {"role": "user", "content": 
-            f"""Following the user's query and search results, extract and present specific information including exact contract terms.
+            f"""Based on the provided search results , answer the following query. 
                 Include detailed references to the source documents, including correct contract name, section, and page number if available.
 
                 User query: {query}
-                Search results: {json.dumps(processed_results, indent=2)}
-
+                Search results: {json.dumps(search_results, indent=2)}
+                Context: {context}
                 Respond in JSON format:
                 {{
                     "answer": "Your detailed answer here",
                     "references": [
-                        {{"file_name": "File Name", "page": "Page Number", "document": "Contract Name", "section": "Section X.Y", "clause": "Clause X.Y.Z", "relevance": "Detailed explanation of relevance"}}
+                        {{"file_name": "File Name", "page": "Page Number", "document": "Contract Name", "relevance": "Detailed explanation of relevance"}}
                     ],
                     "confidence": 0.0,
                     "summary": "A brief summary of key points (for summary requests)"
@@ -149,7 +162,7 @@ class Solar:
 
                 Rules:
                 1. Your entire response should be a valid JSON object.
-                2. The "answer" field should contain your detailed response to the user's query, citing specific contract terms and clauses.
+                2. The "answer" field should contain your detailed response to the user's query, citing specific contract terms and clauses (if available).
                 3. The "references" field should be an array of objects, each containing detailed information about the source.
                 4. The "confidence" field should be a number between 0 and 1, indicating your confidence in the answer based on the available information.
                 5. Ensure all JSON syntax is correct.
@@ -182,26 +195,29 @@ class Solar:
             "summary": ""
         }
 
-    def check_groundedness(self, response: str, search_results: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def check_groundedness(self, response: Dict[str, Any]) -> Dict[str, Any]:
         try:
+            answer = response.get('answer', '')
+            references = response.get('references', [])
+            
             messages = [
                 {"role": "system", "content": "You are an AI assistant specialized in evaluating the groundedness of responses related to procurement contracts."},
                 {"role": "user", "content": f"""
-                Evaluate the groundedness of the following response based on the provided search results.
+                Evaluate the groundedness of the following response based on the provided references.
                 Groundedness means how well the response is supported by the given context and how relevant it is to procurement contracts.
 
                 Response to evaluate:
-                {response}
+                {answer}
 
-                Search results:
-                {json.dumps(search_results, indent=2)}
+                References:
+                {json.dumps(references, indent=2)}
 
                 Provide your evaluation in JSON format:
                 {{
                     "score": 0.0,  // A float between 0 and 1, where 1 is perfectly grounded and 0 is completely ungrounded
                     "feedback": "Your detailed feedback here explaining the score",
                     "relevance_to_procurement": "Explanation of how relevant the response is to procurement contracts",
-                    "accuracy": "Assessment of the response's accuracy based on the search results"
+                
                 }}
                 """}
             ]
@@ -225,30 +241,28 @@ class Solar:
             "score": 0.0,
             "feedback": "Error in groundedness check",
             "relevance_to_procurement": "Unable to determine",
-            "accuracy": "Unable to assess"
+            
         }
-
-    def self_evaluate(self, query: str, response: Dict[str, Any], search_results: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def self_evaluate(self, query: str, response: Dict[str, Any]) -> Dict[str, Any]:
+        #context = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
         messages = [
             {"role": "system", "content": "You are an AI assistant specialized in evaluating responses to procurement contract-related queries."},
             {"role": "user", "content": 
             f"""Evaluate the following response to the user query about procurement contracts. 
-                Consider the relevance, accuracy, and completeness of the answer based on the provided search results.
+                Consider the relevance, accuracy, and completeness of the answer based on the provided references.
 
                 User query: {query}
-                
-                Search results: {json.dumps(search_results, indent=2)}
                 Response:
-                {json.dumps(response, indent=2)}
+                {response.get('answer', '')}
+
+                References:
+                {json.dumps(response.get('references', []), indent=2)}
 
                 Provide your evaluation in JSON format:
                 {{
                     "evaluation_score": 0.0,  // A float between 0 and 1
                     "feedback": "Your detailed feedback here",
                     "relevance_to_query": "Explanation of how relevant the response is to the user's query",
-                    "accuracy": "Assessment of the response's accuracy based on the search results",
-                    "completeness": "Assessment of how complete the response is",
-                    "procurement_specific_value": "Assessment of the response's value in the context of procurement",
                     "suggestions_for_improvement": ["suggestion1", "suggestion2"]
                 }}
             """
@@ -276,9 +290,6 @@ class Solar:
             "evaluation_score": 0.5,
             "feedback": "Unable to perform a comprehensive evaluation.",
             "relevance_to_query": "Unable to determine",
-            "accuracy": "Unable to assess",
-            "completeness": "Unable to assess",
-            "procurement_specific_value": "Unable to assess",
             "suggestions_for_improvement": ["Ensure the response addresses procurement-specific aspects"]
         }
 
@@ -299,13 +310,23 @@ class Solar:
                 query = state['query']
                 analysis = state['analysis']
                 vector_db = state['vector_db']
-                logger.debug(f"Retriever input - Query: {query}, Analysis: {analysis}, Vector DB: {vector_db}")
+                increase_results = state.get('increase_results', False)
+                #logger.debug(f"Retriever input - Query: {query}, Analysis: {analysis}, Vector DB: {vector_db}")
                 query_embedding = self.embed_query(query)
+                n_results = 10 if increase_results else 5
                 topk_results = vector_db.hybrid_search(
                     query_embedding=query_embedding,
                     keywords=analysis.get('keywords', []) + analysis.get('focus_areas', []),
-                    n_results=5
+                    n_results=n_results
                 )
+
+                if not topk_results:
+                    logger.warning("No results found. Expanding search.")
+                    topk_results = vector_db.hybrid_search(
+                        query_embedding=query_embedding,
+                        keywords=[],  # Remove keyword constraint
+                        n_results=n_results * 2  # Double the number of results
+                    )
                 logger.debug(f"Retriever output - Detailed results: {topk_results}")
                 state['topk_results'] = topk_results
                 return state
@@ -336,13 +357,11 @@ class Solar:
         def groundedness_checker(state):
             try:
                 response = state.get('response', {})
-                topk_results = state.get('topk_results', [])
                 if not response:
                     logger.warning("No response found in state for groundedness_checker")
                     return state
-                groundedness = self.check_groundedness(response.get('answer', ''), topk_results)
+                groundedness = self.check_groundedness(response)
                 state['groundedness'] = groundedness
-    
                 return state
             except Exception as e:
                 logger.error(f"Error in groundedness_checker: {e}")
@@ -356,8 +375,7 @@ class Solar:
                 if not response:
                     logger.warning("No response found in state for evaluation")
                     return state
-                topk_results = state.get('topk_results', [])
-                evaluation = self.self_evaluate(query, response, topk_results)
+                evaluation = self.self_evaluate(query, response)
                 state['evaluation'] = evaluation
                 return state
             except Exception as e:
@@ -381,17 +399,102 @@ class Solar:
 
         return workflow.compile()
 
-    def process_query(self, query: str, vector_db) -> Dict[str, Any]:
+    def process_query(self, query: str, vector_db, refinement_count=0) -> Dict[str, Any]:
+        MAX_REFINEMENT_ATTEMPTS = 3 
+        CONFIDENCE_THRESHOLD = 0.55
+        GROUNDEDNESS_THRESHOLD = 0.75
         try:
             initial_state = {
                 "query": query,
                 "vector_db": vector_db,
+                "refinement_count": refinement_count
             }
-            logger.debug(f"Initial state: {initial_state}")
+            logger.debug(f"Processing query (attempt {refinement_count + 1}): {query}")
 
             final_state = self.graph.invoke(initial_state)
-            logger.debug(f"Final state: {final_state}")
 
+            if 'response' in final_state:
+                result = final_state['response']
+                groundedness = final_state.get('groundedness', {})
+                
+                if result['confidence'] < CONFIDENCE_THRESHOLD and refinement_count < MAX_REFINEMENT_ATTEMPTS:
+                    refined_query = self.refine_query(query, result['answer'])
+                    if refined_query != query:
+                        logger.info(f"Refining query (attempt {refinement_count + 1})")
+                        return self.process_query(refined_query, vector_db, refinement_count + 1)
+                    
+                if groundedness.get('score', 0) < GROUNDEDNESS_THRESHOLD and refinement_count < MAX_REFINEMENT_ATTEMPTS:
+                    logger.info(f"Increasing results (attempt {refinement_count + 1})")
+                    return self.increase_n_results(query, vector_db, refinement_count + 1)
+                
+                result.update({
+                    "groundedness": groundedness,
+                    "evaluation": final_state.get('evaluation', {})
+                })
+                return result
+            elif 'error' in final_state:
+                logger.error(f"Error in process_query: {final_state['error']}")
+                return {
+                    "answer": f"An error occurred: {final_state['error']}",
+                    "references": [],
+                    "confidence": 0.0,
+                    "summary": "",
+                    "groundedness": {"score": 0.0, "feedback": "Error occurred"},
+                    "evaluation": {"evaluation_score": 0.0, "feedback": "Error occurred"}
+                }
+        except Exception as e:
+            logger.exception(f"Unexpected error in process_query: {e}")
+            return {
+                "answer": f"An unexpected error occurred: {str(e)}",
+                "references": [],
+                "confidence": 0.0,
+                "summary": "",
+                "groundedness": {"score": 0.0, "feedback": "Exception occurred"},
+                "evaluation": {"evaluation_score": 0.0, "feedback": "Exception occurred"}
+            }
+        
+    def refine_query(self, original_query: str, initial_answer: str) -> str:
+        
+        messages = [
+            {"role": "system", "content": "You are an AI assistant specialized in refining queries to extract more accurate information from a contract database."},
+            {"role": "user", "content": f"""
+            Based on the original query and the initial answer, generate a refined query that will help retrieve more accurate or complete information.
+            
+            Original Query: {original_query}
+            Initial Answer: {initial_answer}
+            
+            Rules for refining the query:
+            1. Focus on aspects of the original query that weren't fully addressed in the initial answer.
+            2. If the initial answer seems incomplete, ask for more specific details.
+            3. If the initial answer seems incorrect, rephrase the query to clarify the information needed.
+            4. Use more specific contract-related terminology if applicable.
+            5. The refined query should be a single, clear question.
+
+            Provide only the refined query as your response.
+            """}
+        ]
+        
+        result = self.call_api(messages)
+        if "choices" in result and len(result["choices"]) > 0:
+            refined_query = result["choices"][0]["message"]["content"].strip()
+            return refined_query
+        else:
+            return original_query  # Fallback to original query if refinement fails
+
+    
+    def increase_n_results(self, query: str, vector_db) -> Dict[str, Any]:
+        try:
+            initial_state = {
+                "query": query,
+                "vector_db": vector_db,
+                "increase_results": True,  
+                "refinement_count":0
+            }
+            #logger.debug(f"Reprocessing with increased results: {initial_state}")
+
+            final_state = self.graph.invoke(initial_state)
+            #logger.debug(f"Final state after reprocessing: {final_state}")
+            refinement_count += 1
             if 'response' in final_state:
                 result = final_state['response']
                 result.update({
@@ -399,45 +502,65 @@ class Solar:
                         "score": 0.5,
                         "feedback": "",
                         "relevance_to_procurement": "",
-                        "accuracy": ""
                     }),
                     "evaluation": final_state.get('evaluation', {
                         "evaluation_score": 0.0,
                         "feedback": "",
                         "relevance_to_query": "",
-                        "accuracy": "",
-                        "completeness": "",
-                        "procurement_specific_value": "",
                         "suggestions_for_improvement": []
                     })
                 })
                 return result
-            elif 'error' in final_state:
+            else:
                 return {
-                    "answer": f"An error occurred: {final_state['error']}",
+                    "answer": "Sorry, I couldn't improve the response even with increased retrieval.",
                     "references": [],
                     "confidence": 0.0,
                     "summary": "",
-                    "groundedness": {"score": 0.5, "feedback": "Error occurred", "relevance_to_procurement": "N/A", "accuracy": "N/A"},
-                    "evaluation": {"evaluation_score": 0.0, "feedback": "Error occurred"}
+                    "groundedness": {"score": 0.5, "feedback": "Reprocessing failed", "relevance_to_procurement": "N/A"},
+                    "evaluation": {"evaluation_score": 0.0, "feedback": "Reprocessing failed"}
                 }
-
-            logger.error("Graph execution completed without producing a complete result")
-            return {
-                "answer": "Sorry, I couldn't generate a complete response due to an unknown error.",
-                "references": [],
-                "confidence": 0.0,
-                "summary": "",
-                "groundedness": {"score": 0.5, "feedback": "Unknown error", "relevance_to_procurement": "N/A", "accuracy": "N/A"},
-                "evaluation": {"evaluation_score": 0.0, "feedback": "Unknown error"}
-            }
         except Exception as e:
-            logger.error(f"Error in process_query: {e}")
+            logger.error(f"Error in reprocess_with_increased_results: {e}")
             return {
-                "answer": f"An error occurred while processing your query: {str(e)}",
+                "answer": f"An error occurred while trying to improve the response: {str(e)}",
                 "references": [],
                 "confidence": 0.0,
                 "summary": "",
-                "groundedness": {"score": 0.5, "feedback": "Exception occurred", "relevance_to_procurement": "N/A", "accuracy": "N/A"},
+                "groundedness": {"score": 0.5, "feedback": "Exception occurred", "relevance_to_procurement": "N/A"},
                 "evaluation": {"evaluation_score": 0.0, "feedback": "Exception occurred"}
             }
+   
+
+    def response_to_eval(self, query_id: str, query: str, gt_answer: str, response: Dict[str, Any]) -> Dict[str, Any]:
+        # Extract the answer text
+        answer_text = response.get("answer", "")
+        
+        # If the answer is a string representation of a dictionary, parse it
+        if isinstance(answer_text, str) and answer_text.startswith('{') and answer_text.endswith('}'):
+            try:
+                answer_dict = json.loads(answer_text.replace("'", '"'))
+                answer_text = answer_dict.get('answer', '')
+            except json.JSONDecodeError:
+                # If JSON parsing fails, keep the original string
+                pass
+
+        return {
+            "query_id": query_id,
+            "query": query,
+            "gt_answer": gt_answer,
+            "response": {
+                "answer": answer_text,  
+                "contexts": response.get("references", []),
+                "confidence": response.get("confidence", 0.0),
+            },
+            "retrieved_context": [
+                {"doc_id": f"doc_{i}", "text": ref.get("document", "")} 
+                for i, ref in enumerate(response.get("references", []))
+            ],
+            "raw_outputs": {
+                "retrieved_documents": response.get("retrieved_documents", []),
+                "groundedness": response.get("groundedness", {}),
+                "evaluation": response.get("evaluation", {})
+            }
+        }

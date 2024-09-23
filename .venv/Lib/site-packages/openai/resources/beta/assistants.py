@@ -35,10 +35,21 @@ __all__ = ["Assistants", "AsyncAssistants"]
 class Assistants(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AssistantsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/openai/openai-python#accessing-raw-response-data-eg-headers
+        """
         return AssistantsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AssistantsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/openai/openai-python#with_streaming_response
+        """
         return AssistantsWithStreamingResponse(self)
 
     def create(
@@ -89,11 +100,11 @@ class Assistants(SyncAPIResource):
               and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
-              Outputs which guarantees the model will match your supplied JSON schema. Learn
-              more in the
+              Outputs which ensures the model will match your supplied JSON schema. Learn more
+              in the
               [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
-              Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
+              Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the
               message the model generates is valid JSON.
 
               **Important:** when using JSON mode, you **must** also instruct the model to
@@ -239,11 +250,11 @@ class Assistants(SyncAPIResource):
               and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
-              Outputs which guarantees the model will match your supplied JSON schema. Learn
-              more in the
+              Outputs which ensures the model will match your supplied JSON schema. Learn more
+              in the
               [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
-              Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
+              Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the
               message the model generates is valid JSON.
 
               **Important:** when using JSON mode, you **must** also instruct the model to
@@ -410,10 +421,21 @@ class Assistants(SyncAPIResource):
 class AsyncAssistants(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAssistantsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/openai/openai-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAssistantsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAssistantsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/openai/openai-python#with_streaming_response
+        """
         return AsyncAssistantsWithStreamingResponse(self)
 
     async def create(
@@ -464,11 +486,11 @@ class AsyncAssistants(AsyncAPIResource):
               and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
-              Outputs which guarantees the model will match your supplied JSON schema. Learn
-              more in the
+              Outputs which ensures the model will match your supplied JSON schema. Learn more
+              in the
               [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
-              Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
+              Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the
               message the model generates is valid JSON.
 
               **Important:** when using JSON mode, you **must** also instruct the model to
@@ -614,11 +636,11 @@ class AsyncAssistants(AsyncAPIResource):
               and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
               Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured
-              Outputs which guarantees the model will match your supplied JSON schema. Learn
-              more in the
+              Outputs which ensures the model will match your supplied JSON schema. Learn more
+              in the
               [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs).
 
-              Setting to `{ "type": "json_object" }` enables JSON mode, which guarantees the
+              Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the
               message the model generates is valid JSON.
 
               **Important:** when using JSON mode, you **must** also instruct the model to

@@ -160,7 +160,6 @@ def render():
                         st.markdown(result.get("answer", "Sorry, I couldn't generate an answer."))
                     print("Debug - References:", result.get("references", []))
                     display_references(result.get("references", []))
-                    #display_references(result.get("references", []))
 
                 col1, col2 = st.columns(2)
                 with col1:
