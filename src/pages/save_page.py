@@ -5,6 +5,8 @@ from src.database.sqlite_db import save_events
 from src.utils.json_parser import extract_events_from_summary
 from src.database.vector_db import vector_db
 import time
+import random
+import string
 
 def render():
     st.title("💾 Save the contract")
@@ -56,8 +58,10 @@ def render():
 
                 try:
                     # Step 1: Save to Google Drive
-                    status_text.text("Saving to Google Drive...")
-                    file_id = save_to_google_drive(uploaded_file)
+                    # status_text.text("Saving to Google Drive...")
+                    # file_id = save_to_google_drive(uploaded_file)
+                    status_text.text("Saving the contract ...")
+                    file_id = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
                     progress_bar.progress(20)
 
                     # Step 2: Extract events from summary
