@@ -2,6 +2,10 @@
 
 This project is part of the exciting [Global AI Week AI Hackathon event](https://www.upstage.ai/global-ai-week-ai-hackathon), where innovative AI solutions are developed to address real-world challenges. Our team is proud to participate in this global competition, showcasing our skills and creativity in the field of artificial intelligence.
 
+## Project Overview
+
+The AI-Powered Contract Management Application is designed to streamline the process of managing contracts using advanced AI technologies. The application provides functionalities such as contract upload, summarization, and interactive chat to assist users in understanding and managing their contracts efficiently.
+
 ## Installation
 
 1. Clone the repository:
@@ -29,7 +33,12 @@ This project is part of the exciting [Global AI Week AI Hackathon event](https:/
     ```
 
 2. Open your web browser and go to `http://localhost:8501` to view the application.
-3. To test the summary functionality and see the system's effectiveness, we recommend using the file `Fuse Medical Inc Distributor Agreement Mar 21 2019 (1).pdf` as a sample contract.
+3. To test the summary functionality and see the system's effectiveness, we recommend using the file `Flotek Industries Supply Agreement Sept 29 2024.pdf` as a sample contract.
+
+## Upstage API Usage
+
+The Upstage API is used in the following sections of the project:
+- **src/services/chat.py**: The `Solar` class utilizes the Upstage API to provide chat functionality.
 
 ## File Structure
 
@@ -52,14 +61,6 @@ This project is part of the exciting [Global AI Week AI Hackathon event](https:/
   DRIVE_FOLDER_ID=your_google_drive_folder_id
   ```
 
-## Contributing
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Create a new Pull Request.
-
 ## Tech-stacks
 
 Here are the tech stacks used in this project:
@@ -72,8 +73,6 @@ Here are the tech stacks used in this project:
 - ![SQLite](https://img.shields.io/badge/-SQLite-003B57?style=flat-square&logo=SQLite&logoColor=white)
 - ![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=GitHub&logoColor=white)
 - ![Google Drive](https://img.shields.io/badge/-Google%20Drive-4285F4?style=flat-square&logo=Google%20Drive&logoColor=white)
-
-
 
 ## License
 
