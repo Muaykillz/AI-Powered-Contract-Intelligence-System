@@ -237,9 +237,10 @@ class VectorDB:
 
         return keyword_results
 
+
     def combine_and_rank_results(self, semantic_results: List[Dict[str, Any]], 
-                                 keyword_results: List[Dict[str, Any]], 
-                                 analysis: Dict[str, Any]) -> List[Dict[str, Any]]:
+                                keyword_results: List[Dict[str, Any]], 
+                                analysis: Dict[str, Any]) -> List[Dict[str, Any]]:
         combined_results = {}
         
         # Helper function to calculate relevance score
@@ -257,19 +258,31 @@ class VectorDB:
                     relevance += 3
             return relevance
 
+        # Function to filter out ID and chunk_index
+        def filter_result(result: Dict[str, Any]) -> Dict[str, Any]:
+            filtered = {k: v for k, v in result.items() if k not in ['id', 'chunk_index']}
+            # Ensure 'metadata' exists and is a dictionary
+            if 'metadata' in filtered and isinstance(filtered['metadata'], dict):
+                filtered['metadata'] = {k: v for k, v in filtered['metadata'].items() if k not in ['chunk_index']}
+            return filtered
+
         # Combine and score results
         for result in semantic_results + keyword_results:
-            if result['id'] not in combined_results:
-                relevance = calculate_relevance(result, analysis)
-                combined_results[result['id']] = {
-                    **result,
-                    'final_score': result['score'] * (1 + 0.1 * relevance)  # Boost score based on relevance
+            filtered_result = filter_result(result)
+            key = (filtered_result.get('metadata', {}).get('contract_id', ''), 
+                filtered_result.get('metadata', {}).get('page_number', ''))
+            
+            if key not in combined_results:
+                relevance = calculate_relevance(filtered_result, analysis)
+                combined_results[key] = {
+                    **filtered_result,
+                    'final_score': filtered_result['score'] * (1 + 0.1 * relevance)  # Boost score based on relevance
                 }
             else:
                 # If the document is in both results, take the higher score
-                combined_results[result['id']]['final_score'] = max(
-                    combined_results[result['id']]['final_score'],
-                    result['score'] * (1 + 0.1 * calculate_relevance(result, analysis))
+                combined_results[key]['final_score'] = max(
+                    combined_results[key]['final_score'],
+                    filtered_result['score'] * (1 + 0.1 * calculate_relevance(filtered_result, analysis))
                 )
 
         # Sort combined results by final_score
@@ -290,4 +303,4 @@ class VectorDB:
             print("Collection is already empty.")
 
 # Create an instance of VectorDB
-vector_db = VectorDB(clear_on_init=False)
+vector_db = VectorDB(clear_on_init=True)

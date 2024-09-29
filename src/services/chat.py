@@ -188,6 +188,33 @@ class Solar:
     def augment_context(self, query: str, search_results: List[Dict[str, Any]]) -> str:
         relevant_info = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
         return f"Query: {query}\n\nRelevant Information:\n{relevant_info}"
+    
+    def Complete_JSON(self, text: str, err_txt: str) -> Dict[str, Any]:
+        messages = [
+            {"role": "system", "content": "You are an AI assistant specialized in completing JSON objects."},
+            {"role": "user", "content": f"""
+                Message to complete: {text}
+                Error message: {err_txt}
+
+                Complete the JSON object to ensure it is valid and contains all necessary fields.
+                Respond in the following JSON format:
+                {{
+                    "answer": "Your detailed answer here",
+                    "references": [
+                        {{"file_name": "metadata['file_name']", "page": "metadata['page_number']", "relevance": "Explanation of relevance"}}
+                    ],
+                    "confidence": 0.0 
+                }}
+                
+                Rules:
+                1. Your entire response must be a valid JSON object.
+                2. Ensure all JSON syntax is correct, including quotes around strings and proper use of commas.
+                3. Do not include any text outside of the JSON object in your response.
+            """
+            }
+        ]
+        result = self.call_api(messages)
+        return result
 
     def generate_response(self, query: str, search_results: List[Dict[str, Any]]) -> Dict[str, Any]:
         context = "\n".join([f"Document {i+1}: {result['document']}" for i, result in enumerate(search_results)])
@@ -228,28 +255,47 @@ class Solar:
             result = self.call_api(messages)
             if "choices" in result and len(result["choices"]) > 0:
                 content = result["choices"][0]["message"]["content"]
+                print("response content:", content)
                 # Try to parse the content as JSON
                 try:
                     return json.loads(content)
                 except json.JSONDecodeError as json_error:
                     print(f"JSON Decode Error: {json_error}")
-                    print("Raw content received:")
-                    print(content)
-                    # Attempt to extract valid JSON from the content
-                    import re
-                    json_match = re.search(r'\{.*\}', content, re.DOTALL)
-                    if json_match:
-                        try:
-                            return json.loads(json_match.group())
-                        except json.JSONDecodeError:
-                            pass  # If this fails, we'll fall back to the default response
+                    print("Raw result received:")
+                    print(result)
+
+                    # If JSON parsing fails, try to complete the JSON object
+                    print("Attempting to complete JSON object...")
+                    completed_result = self.Complete_JSON(str(result), str(json_error))
+                    completed_content = result["choices"][0]["message"]["content"]
+                    try:
+                        return json.loads(completed_content)
+                    except json.JSONDecodeError as json_error:
+                        print(f"JSON Decode Error: {json_error}")
+                        print("Raw content received:")
+                        print(completed_result)
+                        return {
+                            "answer": "I'm sorry, but an error occurred while generating the response. Please try again later.",
+                            "references": [],
+                            "confidence": 0.0
+                        }
             
             # If we couldn't parse JSON or extract valid JSON, return a default response
-            return {
-                "answer": "I apologize, but I encountered an error while processing the response. Could you please rephrase your question or try again?",
-                "references": [],
-                "confidence": 0.0
-            }
+            else:
+                completed_result = self.Complete_JSON(str(result), "No choices in the response")
+                completed_content = result["choices"][0]["message"]["content"]
+                try:
+                    return json.loads(completed_content)
+                except json.JSONDecodeError as json_error:
+                    print(f"JSON Decode Error: {json_error}")
+                    print("Raw content received:")
+                    print(completed_result)
+                    return {
+                        "answer": "I'm sorry, but an error occurred while generating the response. Please try again later.",
+                        "references": [],
+                        "confidence": 0.0
+                    }
+                
         except Exception as e:
             print(f"Error in generate_response: {str(e)}")
             return {
